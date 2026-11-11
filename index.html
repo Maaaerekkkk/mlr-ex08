@@ -3,86 +3,205 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#000000">
 <title>Klasifikátor listov</title>
 <style>
-  :root { --bg:#f6f7f4; --fg:#1d2a1f; --muted:#5d6b60; --card:#fff; --accent:#2f7d4a; --bar:#dfe7e0; }
+  :root {
+    --bg: #f2f3f0; --card: #ffffff; --fg: #111712; --muted: #5f6b63; --line: rgba(0, 0, 0, .06);
+    --accent: #16804a; --accent-fg: #ffffff; --track: #e8ece8; --soft: #eef1ee;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 6px 20px rgba(0, 0, 0, .06);
+    --apple: #d7372b; --cherry: #8e1d4f; --chestnut: #8a5a2b; --maple: #ee8516; --unsure: #8a948d;
+    --ok: #16804a; --bad: #c0261d;
+  }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#121714; --fg:#e6ede7; --muted:#9aa89d; --card:#1b221d; --accent:#5cc282; --bar:#2a332c; }
+    :root {
+      --bg: #000000; --card: #16191a; --fg: #eef2ef; --muted: #9aa69e; --line: rgba(255, 255, 255, .07);
+      --accent: #3ccf7d; --accent-fg: #04210f; --track: #262b2c; --soft: #202526;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .6);
+      --apple: #ff5a4c; --cherry: #d0467f; --chestnut: #c08850; --maple: #ffa13a; --unsure: #8a948d;
+      --ok: #3ccf7d; --bad: #ff7a70;
+    }
   }
   * { box-sizing: border-box; }
-  [hidden] { display:none !important; }
-  body { margin:0; background:var(--bg); color:var(--fg);
-         font:16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width:520px; margin:0 auto; padding:16px; }
-  h1 { font-size:1.4rem; margin:0 0 4px; }
-  p.sub { margin:0 0 12px; color:var(--muted); font-size:.9rem; }
-  .card { background:var(--card); border-radius:14px; padding:12px; margin-bottom:14px;
-          box-shadow:0 1px 3px rgba(0,0,0,.08); }
-  .view { position:relative; width:100%; aspect-ratio:1/1; background:#000; border-radius:10px; overflow:hidden; }
-  .view video, .view img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .view .frame { position:absolute; inset:0; border:3px solid rgba(255,255,255,.6); border-radius:10px; pointer-events:none; }
-  .view .hint { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-                color:#ccc; text-align:center; padding:16px; font-size:.95rem; }
-  .btns { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-  button, label.btn { flex:1 1 auto; appearance:none; border:0; border-radius:10px; padding:12px 14px;
-          font:inherit; font-weight:600; background:var(--accent); color:#fff; cursor:pointer; text-align:center; }
-  button.secondary, label.btn.secondary { background:var(--bar); color:var(--fg); }
-  button:disabled { opacity:.5; }
-  input[type=file] { display:none; }
-  .row { display:grid; grid-template-columns: 5.5rem 1fr 4.2rem; gap:8px; align-items:center; margin:8px 0; }
-  .row .name { font-weight:600; }
-  .row .track { height:14px; background:var(--bar); border-radius:7px; overflow:hidden; }
-  .row .fill { height:100%; width:0; background:var(--accent); transition:width .15s; }
-  .row .val { text-align:right; font-variant-numeric:tabular-nums; }
-  .row.top .name { color:var(--accent); }
-  #status { font-size:.85rem; color:var(--muted); margin-top:6px; min-height:1.2em; word-break:break-word; }
-  #check { font-size:.85rem; white-space:pre-wrap; font-family:ui-monospace, Menlo, monospace; margin-top:8px; }
-  .ok { color:var(--accent); } .bad { color:#d33; }
-  footer .qr { display:flex; gap:14px; align-items:center; }
-  footer .qr svg { width:140px; height:140px; flex:none; border-radius:6px; }
-  footer .qr > div { flex:1 1 0; min-width:0; font-size:.9rem; }
-  footer h2 { font-size:1rem; margin:0 0 8px; }
-  footer a { color:var(--accent); word-break:break-all; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Camera stage: full width, ~60 % of the height ---------- */
+  .stage {
+    position: relative; width: 100%; max-width: 560px; margin: 0 auto;
+    height: 60vh; height: 60svh; min-height: 340px;
+    background: #000; border-radius: 0 0 28px 28px; overflow: hidden;
+  }
+  .stage video, .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .topbar {
+    position: absolute; left: 0; right: 0; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center;
+    padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left));
+    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, 0)); color: #fff;
+  }
+  .topbar b { font-size: 1.05rem; letter-spacing: .01em; }
+  .topbar span { font-size: .8rem; opacity: .85; }
+  .hint {
+    position: absolute; inset: 0; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center;
+    padding: 32px; text-align: center; color: #c9d2cc; font-size: .95rem;
+  }
+  .hint svg { width: 44px; height: 44px; opacity: .8; }
+
+  /* The crop square = exactly what the model sees, marked with corner brackets */
+  .crop { position: absolute; z-index: 1; pointer-events: none; box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .38); }
+  .crop i { position: absolute; width: 26px; height: 26px; border: 0 solid #fff; }
+  .crop i:nth-child(1) { left: 0; top: 0; border-left-width: 4px; border-top-width: 4px; border-top-left-radius: 10px; }
+  .crop i:nth-child(2) { right: 0; top: 0; border-right-width: 4px; border-top-width: 4px; border-top-right-radius: 10px; }
+  .crop i:nth-child(3) { left: 0; bottom: 0; border-left-width: 4px; border-bottom-width: 4px; border-bottom-left-radius: 10px; }
+  .crop i:nth-child(4) { right: 0; bottom: 0; border-right-width: 4px; border-bottom-width: 4px; border-bottom-right-radius: 10px; }
+
+  /* Floating result chip over the bottom of the video */
+  .chip {
+    position: absolute; z-index: 2; left: 50%; bottom: 18px; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 12px; max-width: calc(100% - 32px);
+    padding: 10px 20px 10px 16px; border-radius: 999px;
+    background: rgba(255, 255, 255, .92); color: #111712; box-shadow: 0 6px 24px rgba(0, 0, 0, .3);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  @media (prefers-color-scheme: dark) { .chip { background: rgba(22, 25, 26, .9); color: #eef2ef; } }
+  .chip .dot { width: 14px; height: 14px; border-radius: 50%; flex: none; background: var(--unsure); transition: background .3s; }
+  .chip .name { font-size: 30px; font-weight: 800; line-height: 1.05; letter-spacing: -.01em; white-space: nowrap; }
+  .chip .pct { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; opacity: .75; white-space: nowrap; }
+  .chip.unsure .name { color: var(--unsure); font-size: 24px; }
+
+  /* ---------- Content below the camera ---------- */
+  main {
+    max-width: 560px; margin: 0 auto;
+    padding: 18px max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; margin-bottom: 16px; box-shadow: var(--shadow); }
+
+  /* Controls: upload | shutter | check */
+  .controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin: 4px 0 18px; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: .78rem; color: var(--muted); }
+  .round {
+    width: 56px; height: 56px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    display: grid; place-items: center; background: var(--card); color: var(--fg); box-shadow: var(--shadow);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .round svg { width: 26px; height: 26px; }
+  .round:disabled { opacity: .45; }
+  label.round { position: relative; }
+  label.round input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .shutter {
+    width: 80px; height: 80px; border-radius: 50%; padding: 6px; cursor: pointer;
+    border: 4px solid var(--accent); background: transparent; -webkit-tap-highlight-color: transparent;
+  }
+  .shutter span { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--accent);
+                  transition: border-radius .2s, transform .2s; }
+  .shutter.on span { border-radius: 10px; transform: scale(.55); background: var(--bad); }
+  .shutter:disabled { opacity: .45; }
+  .round:focus-visible, .shutter:focus-visible, label.round:focus-within, .seg button:focus-visible {
+    outline: 3px solid var(--accent); outline-offset: 3px;
+  }
+  .status { text-align: center; font-size: .85rem; color: var(--muted); margin: -6px 0 16px; min-height: 1.3em; }
+
+  /* Segmented control */
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; background: var(--soft); border-radius: 999px; }
+  .seg button {
+    min-height: 46px; border: 0; border-radius: 999px; font: inherit; font-weight: 650; cursor: pointer;
+    background: transparent; color: var(--muted); -webkit-tap-highlight-color: transparent; transition: background .2s, color .2s;
+  }
+  .seg button[aria-checked="true"] { background: var(--accent); color: var(--accent-fg); }
+  .model { margin-top: 12px; font-size: .88rem; color: var(--muted); text-align: center; }
+  .model b { color: var(--fg); font-weight: 650; }
+  .progress { height: 6px; margin-top: 10px; background: var(--track); border-radius: 3px; overflow: hidden; }
+  .progress div { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+
+  /* Probability bars, one fixed color per class */
+  .card h2 { font-size: .8rem; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; }
+  .row { margin-top: 14px; }
+  .row .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .row .lab { font-weight: 650; }
+  .row .lab small { color: var(--muted); font-weight: 500; margin-left: 6px; }
+  .row .val { font-variant-numeric: tabular-nums; font-weight: 650; }
+  .row .track { height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; }
+  .row .fill { height: 100%; width: 0; border-radius: 5px; transition: width .35s cubic-bezier(.2, .8, .2, 1); }
+
+  #check { margin-top: 12px; font: .82rem/1.55 ui-monospace, Menlo, monospace; white-space: pre-wrap; }
+  #check:empty { display: none; }
+  .ok { color: var(--ok); font-weight: 700; } .bad { color: var(--bad); font-weight: 700; }
+
+  footer h2 { font-size: 1rem; margin: 0 0 10px; }
+  .qr { display: flex; gap: 14px; align-items: center; }
+  .qr svg { width: 132px; height: 132px; flex: none; border-radius: 8px; }
+  .qr div { flex: 1 1 0; min-width: 0; font-size: .9rem; }
+  a { color: var(--accent); word-break: break-all; }
+  .note { font-size: .8rem; color: var(--muted); text-align: center; margin: 4px 0 0; }
 </style>
 </head>
 <body>
+<div class="stage" id="view">
+  <video id="video" playsinline muted autoplay hidden></video>
+  <img id="photo" alt="Nahraná fotka" hidden>
+  <div class="crop" id="crop" hidden><i></i><i></i><i></i><i></i></div>
+  <div class="topbar"><b>Klasifikátor listov</b><span id="topModel"></span></div>
+  <div class="hint" id="hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+    Stlačte spúšť a namierte kameru na jeden list,<br>alebo nahrajte fotku.
+  </div>
+  <div class="chip" id="chip" hidden>
+    <span class="dot" id="chipDot"></span><span class="name" id="topName">–</span><span class="pct" id="topPct"></span>
+  </div>
+</div>
+
 <main>
-  <h1>🍃 Klasifikátor listov</h1>
-  <p class="sub">Namierte zadnú kameru na list – klasifikuje sa stredový štvorec obrazu.</p>
+  <div class="controls">
+    <div class="side">
+      <label class="round" for="file" aria-label="Nahrať fotku" title="Nahrať fotku">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 9"/></svg>
+        <input type="file" id="file" accept="image/*">
+      </label>
+      Fotka
+    </div>
+    <button class="shutter" id="camBtn" disabled aria-label="Spustiť kameru"><span></span></button>
+    <div class="side">
+      <button class="round" id="checkBtn" disabled aria-label="Overiť check_image.jpg" title="Overiť check_image.jpg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </button>
+      Test
+    </div>
+  </div>
+  <p class="status" id="status" aria-live="polite">Načítavam…</p>
 
-  <section class="card">
-    <div class="view" id="view">
-      <video id="video" playsinline muted autoplay></video>
-      <img id="photo" alt="" hidden>
-      <div class="frame"></div>
-      <div class="hint" id="hint">Stlačte „Spustiť kameru“ alebo nahrajte fotku.</div>
-    </div>
-    <div class="btns">
-      <button id="camBtn" disabled>Spustiť kameru</button>
-      <label class="btn secondary" for="file">Nahrať fotku</label>
-      <input type="file" id="file" accept="image/*">
-    </div>
-    <div id="status">Načítavam model…</div>
+  <section class="card" aria-label="Pravdepodobnosti">
+    <h2>Pravdepodobnosti</h2>
+    <div id="bars"></div>
   </section>
 
-  <section class="card">
-    <div id="probs"></div>
-  </section>
-
-  <section class="card">
-    <button class="secondary" id="checkBtn" disabled>Overiť check_image.jpg</button>
+  <section class="card" aria-label="Model">
+    <div class="seg" role="radiogroup" aria-label="Model">
+      <button role="radio" data-model="final" aria-checked="true">Task 4 model</button>
+      <button role="radio" data-model="task2" aria-checked="false">Task 2 model</button>
+    </div>
+    <div class="model" id="modelInfo"></div>
+    <div class="progress" id="progress" hidden><div id="progressBar"></div></div>
     <div id="check"></div>
   </section>
 
   <footer class="card">
     <h2>QR kód – otvoriť túto stránku v mobile</h2>
     <div class="qr">
-      <!-- QR vygenerovaný lokálne (segno), kóduje https://maaaerekkkk.github.io/mlr-ex08/ -->
+      <!-- QR generated locally (segno), encodes https://maaaerekkkk.github.io/mlr-ex08/ -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 222" role="img" aria-label="QR kód: https://maaaerekkkk.github.io/mlr-ex08/"><g transform="scale(6)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#000" d="M4 4.5h7m4 0h3m2 0h2m4 0h7m-29 1h1m5 0h1m1 0h5m7 0h1m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m4 0h1m2 0h1m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h3m4 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h3m1 0h1m3 0h1m1 0h3m-21 1h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h2m2 0h3m-26 1h2m4 0h1m1 0h6m3 0h1m3 0h2m1 0h2m-25 1h1m2 0h4m3 0h4m6 0h2m-22 1h1m3 0h2m2 0h2m1 0h1m1 0h1m2 0h3m2 0h2m-25 1h1m1 0h2m1 0h1m1 0h3m1 0h3m1 0h1m3 0h1m1 0h2m4 0h1m-29 1h4m1 0h1m3 0h4m2 0h1m2 0h2m1 0h4m2 0h2m-29 1h2m3 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m1 0h4m-27 1h1m1 0h3m3 0h1m1 0h1m3 0h3m1 0h3m3 0h1m1 0h1m1 0h1m-29 1h4m2 0h1m2 0h2m1 0h1m2 0h5m5 0h2m-27 1h2m1 0h1m3 0h1m2 0h2m1 0h1m1 0h6m1 0h3m1 0h3m-29 1h3m2 0h2m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h2m2 0h1m-29 1h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h1m2 0h1m-25 1h1m2 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h6m1 0h3m-21 1h3m1 0h1m1 0h2m1 0h2m1 0h1m3 0h2m-26 1h7m2 0h2m4 0h2m1 0h3m1 0h1m1 0h3m-27 1h1m5 0h1m4 0h1m2 0h1m1 0h1m2 0h2m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m3 0h5m1 0h1m2 0h7m2 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h10m3 0h2m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h5m2 0h8m-28 1h1m5 0h1m5 0h1m2 0h1m7 0h4m1 0h1m-29 1h7m1 0h1m4 0h1m3 0h3m2 0h2m2 0h1"/></g></svg>
-      <div>Naskenujte fotoaparátom v iPhone alebo kliknite:<br>
+      <div>Naskenujte fotoaparátom v telefóne alebo kliknite:<br>
         <a id="pageLink" href="https://maaaerekkkk.github.io/mlr-ex08/">https://maaaerekkkk.github.io/mlr-ex08/</a></div>
     </div>
   </footer>
+  <p class="note">Obrázok z kamery ani fotka neopúšťajú telefón – model beží priamo v prehliadači.</p>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
@@ -91,80 +210,179 @@
   const $ = id => document.getElementById(id);
   const status = msg => { $('status').textContent = msg; };
 
-  // Safari na iPhone: bez cross-origin isolation nie sú vlákna k dispozícii -> 1 vlákno, čistý WASM
+  // Safari on iPhone: no cross-origin isolation -> single-threaded plain WASM
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
 
-  let info, session, S;
-  try {
-    info = await (await fetch('model_info.json', {cache: 'no-cache'})).json();
-    S = info.input_size;
-    session = await ort.InferenceSession.create('leaf_model.onnx', { executionProviders: ['wasm'] });
-  } catch (e) { status('Chyba pri načítaní modelu: ' + e); return; }
-  const inName = session.inputNames[0], outName = session.outputNames[0];
+  // The two models. Both use the same model_info.json (same classes, input size, mean, std).
+  const MODELS = {
+    final: { file: 'leaf_model_final.onnx', bytes: 16724538, name: 'Task 4 model',
+             detail: 'C1 · EfficientNet-B0', expected: 'check_expected_final.json' },
+    task2: { file: 'leaf_model.onnx', bytes: 6339031, name: 'Task 2 model',
+             detail: 'MobileNetV3-Small', expected: 'check_expected.json' },
+  };
+  const SK = { apple: 'Jabloň', cherry: 'Čerešňa', chestnut: 'Gaštan', maple: 'Javor' };
+  const UNSURE = 0.6;   // below this top probability the chip says "not sure"
 
-  // UI riadky pre každú triedu
+  let info;
+  try { info = await (await fetch('model_info.json', { cache: 'no-cache' })).json(); }
+  catch (e) { status('Chyba pri načítaní model_info.json: ' + e); return; }
+  const S = info.input_size, N = S * S, mean = info.mean, std = info.std;
+
+  // Bars for all classes, each with its own color
   const rows = info.classes.map(c => {
     const r = document.createElement('div');
     r.className = 'row';
-    r.innerHTML = `<span class="name">${c}</span><div class="track"><div class="fill"></div></div><span class="val">–</span>`;
-    $('probs').appendChild(r);
-    return { r, fill: r.querySelector('.fill'), val: r.querySelector('.val') };
+    r.innerHTML = `<div class="head"><span class="lab">${SK[c] || c}<small>${c}</small></span><span class="val">–</span></div>` +
+                  `<div class="track"><div class="fill" style="background: var(--${c}, var(--accent))"></div></div>`;
+    $('bars').appendChild(r);
+    return { fill: r.querySelector('.fill'), val: r.querySelector('.val') };
   });
 
+  // ================= PREPROCESSING (exactly as model_info.json and the notebook) =================
+  // 1. centre square crop of the frame   2. resize to S×S (S = input_size)
+  // 3. RGB values / 255 -> 0..1           4. (x - mean[c]) / std[c] for each channel c = R, G, B
+  // 5. NCHW layout, float32 tensor of shape 1×3×S×S (all R, then all G, then all B)
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = S;
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-  const mean = info.mean, std = info.std, N = S * S;
   const data = new Float32Array(3 * N);
-
-  // stredový štvorec -> S×S -> RGB/255 -> (x-mean)/std -> NCHW 1×3×S×S
-  async function classify(src, w, h) {
-    const side = Math.min(w, h), sx = (w - side) / 2, sy = (h - side) / 2;
+  function preprocess(src, w, h) {
+    const side = Math.min(w, h), sx = (w - side) / 2, sy = (h - side) / 2;  // 1. centre square
     ctx.clearRect(0, 0, S, S);
-    ctx.drawImage(src, sx, sy, side, side, 0, 0, S, S);
-    const px = ctx.getImageData(0, 0, S, S).data;
-    for (let i = 0; i < N; i++) {
-      data[i]         = (px[4*i]   / 255 - mean[0]) / std[0];
-      data[N + i]     = (px[4*i+1] / 255 - mean[1]) / std[1];
-      data[2*N + i]   = (px[4*i+2] / 255 - mean[2]) / std[2];
+    ctx.drawImage(src, sx, sy, side, side, 0, 0, S, S);                     // 2. resize to S×S
+    const px = ctx.getImageData(0, 0, S, S).data;                          // RGBA bytes, alpha ignored
+    for (let i = 0; i < N; i++) {                                          // 3. /255, 4. mean/std, 5. NCHW
+      data[i]         = (px[4 * i]     / 255 - mean[0]) / std[0];          // R plane
+      data[N + i]     = (px[4 * i + 1] / 255 - mean[1]) / std[1];          // G plane
+      data[2 * N + i] = (px[4 * i + 2] / 255 - mean[2]) / std[2];          // B plane
     }
-    const out = await session.run({ [inName]: new ort.Tensor('float32', data, [1, 3, S, S]) });
-    const logits = Array.from(out[outName].data);
-    const m = Math.max(...logits), ex = logits.map(v => Math.exp(v - m)), sum = ex.reduce((a, b) => a + b, 0);
-    return ex.map(v => v / sum);
+    return new ort.Tensor('float32', data, [1, 3, S, S]);
+  }
+  // ================================================================================================
+
+  // ---- models: loaded only when selected, cached afterwards ----
+  const sessions = {};
+  let active = 'final', loadingKey = null;
+  const mb = b => (b / 1e6).toFixed(1) + ' MB';
+  function showModelInfo(state) {
+    const m = MODELS[active];
+    $('modelInfo').innerHTML = `<b>${m.detail}</b> · ${mb(m.bytes)}${state ? ' · ' + state : ''}`;
+    $('topModel').textContent = m.name;
+  }
+  async function loadModel(key) {
+    if (sessions[key]) return sessions[key];
+    const m = MODELS[key];
+    loadingKey = key;
+    $('progress').hidden = false; $('progressBar').style.width = '0%';
+    const res = await fetch(m.file);
+    if (!res.ok) throw new Error(`${m.file}: HTTP ${res.status}`);
+    const total = +res.headers.get('Content-Length') || m.bytes;
+    const reader = res.body.getReader(), chunks = [];
+    let got = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value); got += value.length;
+      const pct = Math.min(100, Math.round(100 * got / total));
+      $('progressBar').style.width = pct + '%';
+      if (key === active) showModelInfo(`sťahujem ${pct} %`);
+    }
+    const buf = new Uint8Array(got);
+    let off = 0; for (const c of chunks) { buf.set(c, off); off += c.length; }
+    if (key === active) showModelInfo('pripravujem…');
+    sessions[key] = await ort.InferenceSession.create(buf, { executionProviders: ['wasm'] });
+    if (loadingKey === key) { loadingKey = null; $('progress').hidden = true; }
+    return sessions[key];
+  }
+  async function selectModel(key) {
+    active = key;
+    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-checked', b.dataset.model === key));
+    showModelInfo(sessions[key] ? 'pripravený' : 'sťahujem…');
+    $('checkBtn').disabled = true; $('check').textContent = '';
+    try {
+      await loadModel(key);
+      if (active !== key) return;
+      showModelInfo('pripravený');
+      $('checkBtn').disabled = false; $('camBtn').disabled = false;
+      if (still) await classifyStill();   // re-classify the shown photo with the new model
+      else if (!running) status('Model je pripravený.');
+    } catch (e) { if (active === key) { showModelInfo('chyba'); status('Model sa nepodarilo načítať: ' + e.message); } }
   }
 
+  async function classify(src, w, h) {
+    const session = sessions[active];
+    const out = await session.run({ [session.inputNames[0]]: preprocess(src, w, h) });
+    const logits = Array.from(out[session.outputNames[0]].data);
+    const m = Math.max(...logits), ex = logits.map(v => Math.exp(v - m)), sum = ex.reduce((a, b) => a + b, 0);
+    return ex.map(v => v / sum);   // softmax
+  }
+
+  // ---- rendering: the chip over the video and the four bars ----
   function show(p) {
-    const best = p.indexOf(Math.max(...p));
+    const best = p.indexOf(Math.max(...p)), c = info.classes[best], sure = p[best] >= UNSURE;
+    $('chip').hidden = false;
+    $('chip').classList.toggle('unsure', !sure);
+    $('topName').textContent = sure ? (SK[c] || c) : 'Nie som si istý';
+    $('topPct').textContent = Math.round(p[best] * 100) + ' %';
+    $('chipDot').style.background = sure ? `var(--${c})` : 'var(--unsure)';
     p.forEach((v, i) => {
       rows[i].fill.style.width = (v * 100).toFixed(1) + '%';
       rows[i].val.textContent = (v * 100).toFixed(1) + ' %';
-      rows[i].r.classList.toggle('top', i === best);
     });
   }
 
-  status(`Model načítaný (vstup 1×3×${S}×${S}, ${info.classes.length} tried).`);
-  $('camBtn').disabled = false; $('checkBtn').disabled = false;
+  // ---- the square overlay: where the centre square of the frame is on screen ----
+  // The video fills the stage (object-fit: cover) when the whole centre square stays visible;
+  // otherwise it is shown completely (contain), so the overlay is always exactly what the model sees.
+  function placeCrop(w, h) {
+    const view = $('view').getBoundingClientRect();
+    const cover = Math.max(view.width / w, view.height / h);
+    const fit = Math.min(w, h) * cover <= Math.min(view.width, view.height) + 0.5 ? 'cover' : 'contain';
+    video.style.objectFit = photo.style.objectFit = fit;
+    const scale = fit === 'cover' ? cover : Math.min(view.width / w, view.height / h);
+    const side = Math.min(w, h) * scale;
+    const crop = $('crop');
+    crop.style.width = crop.style.height = side + 'px';
+    crop.style.left = (view.width - side) / 2 + 'px';
+    crop.style.top = (view.height - side) / 2 + 'px';
+    crop.hidden = false;
+  }
+  let shown = null;   // {w, h} of what is on screen
+  window.addEventListener('resize', () => { if (shown) placeCrop(shown.w, shown.h); });
 
-  // ---- živá kamera ----
+  // ---- live camera: probabilities smoothed so that the bars do not flicker ----
   const video = $('video'), photo = $('photo');
-  let stream = null, running = false;
+  let stream = null, running = false, smooth = null, still = null;
+  const ALPHA = 0.3;   // weight of the newest frame in the moving average
   async function loop() {
-    if (!running) return;
-    if (video.readyState >= 2 && video.videoWidth) {
-      try { show(await classify(video, video.videoWidth, video.videoHeight)); } catch (e) { status('Chyba: ' + e); }
+    while (running) {
+      if (sessions[active] && video.readyState >= 2 && video.videoWidth) {
+        if (!shown || shown.w !== video.videoWidth || shown.h !== video.videoHeight) {
+          shown = { w: video.videoWidth, h: video.videoHeight }; placeCrop(shown.w, shown.h);
+        }
+        try {
+          const p = await classify(video, video.videoWidth, video.videoHeight);
+          smooth = smooth ? smooth.map((s, i) => (1 - ALPHA) * s + ALPHA * p[i]) : p;
+          show(smooth);
+        } catch (e) { status('Chyba: ' + e.message); }
+      }
+      await new Promise(r => requestAnimationFrame(r));
     }
-    requestAnimationFrame(loop);
+  }
+  function setShutter(on) {
+    $('camBtn').classList.toggle('on', on);
+    $('camBtn').setAttribute('aria-label', on ? 'Zastaviť kameru' : 'Spustiť kameru');
   }
   function stopCam() {
     running = false;
     if (stream) stream.getTracks().forEach(t => t.stop());
-    stream = null; $('camBtn').textContent = 'Spustiť kameru';
+    stream = null; video.hidden = true;
+    setShutter(false);
   }
   $('camBtn').onclick = async () => {
-    if (stream) { stopCam(); return; }
+    if (stream) { stopCam(); status('Kamera je zastavená.'); return; }
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       status('Kamera nie je dostupná (vyžaduje HTTPS). Použite nahranie fotky.'); return;
     }
@@ -173,69 +391,80 @@
         audio: false, video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } }
       });
       video.srcObject = stream; await video.play();
+      still = null; smooth = null; shown = null;
       photo.hidden = true; video.hidden = false; $('hint').hidden = true;
-      $('camBtn').textContent = 'Zastaviť kameru';
-      status('Kamera beží – pravdepodobnosti sa aktualizujú živo.');
+      setShutter(true);
+      status('Kamera beží – výsledok sa priebežne aktualizuje.');
       running = true; loop();
     } catch (e) { stopCam(); status('Kameru sa nepodarilo spustiť: ' + e.name + ' – ' + e.message); }
   };
+  document.addEventListener('visibilitychange', () => { if (document.hidden && stream) stopCam(); });
 
-  // ---- dekódovanie obrázka ----
-  // Safari (ImageIO) dekóduje JPEG inak než libjpeg (PIL/Chromium) – rozdiel až 7 úrovní/pixel,
-  // čo pri check_image posunie pravdepodobnosti o ~4 %. JPEG preto dekódujeme cez mozjpeg (WASM),
-  // ktorý dáva bit-presne rovnaké pixely ako PIL v každom prehliadači. Iné formáty -> natívne.
+  // ---- decoding of photos ----
+  // Safari decodes JPEG slightly differently than libjpeg (PIL), which changes the probabilities.
+  // JPEGs are therefore decoded with mozjpeg (WASM, served from this site): the same pixels as PIL in every
+  // browser. Other formats use the browser's decoder.
   let jpegDecode = null;
   async function decodeToCanvas(blob) {
     const buf = await blob.arrayBuffer();
     const b = new Uint8Array(buf, 0, 3);
     if (b[0] === 0xFF && b[1] === 0xD8 && b[2] === 0xFF) {
       try {
-        if (!jpegDecode) jpegDecode = (await import('https://cdn.jsdelivr.net/npm/@jsquash/jpeg@1.5.0/decode.js')).default;
+        if (!jpegDecode) jpegDecode = (await import('./vendor/jsquash-jpeg/decode.js')).default;
         const id = await jpegDecode(buf);
         const c = document.createElement('canvas'); c.width = id.width; c.height = id.height;
         c.getContext('2d').putImageData(id, 0, 0);
         return { src: c, w: id.width, h: id.height, how: 'mozjpeg' };
-      } catch (e) { console.warn('mozjpeg zlyhal, použijem natívny dekodér', e); }
+      } catch (e) { console.warn('mozjpeg failed, using the browser decoder', e); }
     }
     const img = new Image(); img.src = URL.createObjectURL(blob); await img.decode();
-    return { src: img, w: img.naturalWidth, h: img.naturalHeight, how: 'natívne' };
+    return { src: img, w: img.naturalWidth, h: img.naturalHeight, how: 'prehliadač' };
   }
-  function showPhoto(blob) {
-    photo.src = URL.createObjectURL(blob); photo.hidden = false; video.hidden = true; $('hint').hidden = true;
+  async function showStill(blob, label) {
+    stopCam();
+    photo.src = URL.createObjectURL(blob); photo.hidden = false; $('hint').hidden = true;
+    still = await decodeToCanvas(blob); still.label = label;
+    shown = { w: still.w, h: still.h }; placeCrop(still.w, still.h);
+    await classifyStill();
+  }
+  let lastStill = null;   // raw (unsmoothed) probabilities of the shown photo
+  async function classifyStill() {
+    if (!sessions[active]) { status('Čakám na model…'); return; }
+    lastStill = await classify(still.src, still.w, still.h);
+    show(lastStill);
+    window.__last = { model: active, probs: lastStill };
+    status(`${still.label}: ${still.w}×${still.h}, ${MODELS[active].name} (dekodér: ${still.how}).`);
   }
 
-  // ---- nahranie fotky (záloha) ----
   $('file').onchange = async e => {
     const f = e.target.files[0]; if (!f) return;
-    stopCam();
-    try {
-      showPhoto(f);
-      const d = await decodeToCanvas(f);
-      show(await classify(d.src, d.w, d.h));
-      status(`Fotka ${d.w}×${d.h} klasifikovaná (dekodér: ${d.how}).`);
-    } catch (err) { status('Fotku sa nepodarilo spracovať: ' + err); }
+    try { await showStill(f, 'Fotka'); } catch (err) { status('Fotku sa nepodarilo spracovať: ' + err); }
+    e.target.value = '';
   };
 
-  // ---- overenie check_image.jpg vs check_expected.json ----
+  // ---- check: check_image.jpg against the expected probabilities of the active model ----
   $('checkBtn').onclick = async () => {
     try {
-      const [blob, exp] = await Promise.all([fetch('check_image.jpg', {cache: 'no-cache'}).then(r => r.blob()),
-        fetch('check_expected.json', {cache: 'no-cache'}).then(r => r.json())]);
-      stopCam();
-      showPhoto(blob);
-      const d = await decodeToCanvas(blob);
-      const p = await classify(d.src, d.w, d.h);
-      show(p);
-      let maxDiff = 0, lines = [];
-      info.classes.forEach((c, i) => {
-        const d = Math.abs(p[i] - exp[c]); maxDiff = Math.max(maxDiff, d);
-        lines.push(`${c.padEnd(9)} ${p[i].toFixed(6)}  očak. ${exp[c].toFixed(6)}  Δ ${d.toExponential(1)}`);
+      const key = active;
+      const [blob, exp] = await Promise.all([
+        fetch('check_image.jpg', { cache: 'no-cache' }).then(r => r.blob()),
+        fetch(MODELS[key].expected, { cache: 'no-cache' }).then(r => r.json())]);
+      await showStill(blob, 'check_image.jpg');
+      let maxDiff = 0, same3 = true;
+      const lines = info.classes.map((c, i) => {
+        const d = Math.abs(lastStill[i] - exp[c]); maxDiff = Math.max(maxDiff, d);
+        same3 = same3 && lastStill[i].toFixed(3) === exp[c].toFixed(3);
+        return `${c.padEnd(9)} ${lastStill[i].toFixed(3)}  očak. ${exp[c].toFixed(3)}`;
       });
-      const ok = maxDiff < 1e-3;
-      $('check').innerHTML = lines.join('\n') + `\n<b class="${ok ? 'ok' : 'bad'}">${ok ? '✔ ZHODA' : '✘ NEZHODA'} (max Δ = ${maxDiff.toExponential(2)})</b>`;
-      window.__checkResult = { ok, maxDiff, p };
+      $('check').innerHTML = `${MODELS[key].name} vs ${MODELS[key].expected}\n` + lines.join('\n') +
+        `\n<span class="${same3 ? 'ok' : 'bad'}">${same3 ? '✔ zhoda na 3 desatinné miesta' : '✘ nezhoda'}</span> (max Δ = ${maxDiff.toExponential(1)})`;
+      window.__check = { model: key, same3, maxDiff, probs: lastStill };
     } catch (e) { $('check').textContent = 'Chyba: ' + e; }
   };
+
+  document.querySelectorAll('.seg button').forEach(b => b.onclick = () => { if (b.dataset.model !== active) selectModel(b.dataset.model); });
+  status('Sťahujem model…');
+  selectModel('final');   // the default model; the other one is downloaded only when selected
 })();
 </script>
 </body>

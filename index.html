@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="sk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#000000">
-<title>Klasifikátor listov</title>
+<title>Leaf Classifier</title>
 <style>
   :root {
     --bg: #f2f3f0; --card: #ffffff; --fg: #111712; --muted: #5f6b63; --line: rgba(0, 0, 0, .06);
@@ -143,13 +143,13 @@
 <body>
 <div class="stage" id="view">
   <video id="video" playsinline muted autoplay hidden></video>
-  <img id="photo" alt="Nahraná fotka" hidden>
+  <img id="photo" alt="Uploaded photo" hidden>
   <div class="crop" id="crop" hidden><i></i><i></i><i></i><i></i></div>
-  <div class="topbar"><b>Klasifikátor listov</b><span id="topModel"></span></div>
+  <div class="topbar"><b>Leaf Classifier</b><span id="topModel"></span></div>
   <div class="hint" id="hint">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
-    Stlačte spúšť a namierte kameru na jeden list,<br>alebo nahrajte fotku.
+    Press the shutter and point the camera at a single leaf,<br>or upload a photo.
   </div>
   <div class="chip" id="chip" hidden>
     <span class="dot" id="chipDot"></span><span class="name" id="topName">–</span><span class="pct" id="topPct"></span>
@@ -159,26 +159,26 @@
 <main>
   <div class="controls">
     <div class="side">
-      <label class="round" for="file" aria-label="Nahrať fotku" title="Nahrať fotku">
+      <label class="round" for="file" aria-label="Upload photo" title="Upload photo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 9"/></svg>
         <input type="file" id="file" accept="image/*">
       </label>
-      Fotka
+      Photo
     </div>
-    <button class="shutter" id="camBtn" disabled aria-label="Spustiť kameru"><span></span></button>
+    <button class="shutter" id="camBtn" disabled aria-label="Start camera"><span></span></button>
     <div class="side">
-      <button class="round" id="checkBtn" disabled aria-label="Overiť check_image.jpg" title="Overiť check_image.jpg">
+      <button class="round" id="checkBtn" disabled aria-label="Check check_image.jpg" title="Check check_image.jpg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
       </button>
       Test
     </div>
   </div>
-  <p class="status" id="status" aria-live="polite">Načítavam…</p>
+  <p class="status" id="status" aria-live="polite">Loading…</p>
 
-  <section class="card" aria-label="Pravdepodobnosti">
-    <h2>Pravdepodobnosti</h2>
+  <section class="card" aria-label="Probabilities">
+    <h2>Probabilities</h2>
     <div id="bars"></div>
   </section>
 
@@ -193,15 +193,15 @@
   </section>
 
   <footer class="card">
-    <h2>QR kód – otvoriť túto stránku v mobile</h2>
+    <h2>QR code – open this page on your phone</h2>
     <div class="qr">
       <!-- QR generated locally (segno), encodes https://maaaerekkkk.github.io/mlr-ex08/ -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 222" role="img" aria-label="QR kód: https://maaaerekkkk.github.io/mlr-ex08/"><g transform="scale(6)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#000" d="M4 4.5h7m4 0h3m2 0h2m4 0h7m-29 1h1m5 0h1m1 0h5m7 0h1m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m4 0h1m2 0h1m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h3m4 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h3m1 0h1m3 0h1m1 0h3m-21 1h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h2m2 0h3m-26 1h2m4 0h1m1 0h6m3 0h1m3 0h2m1 0h2m-25 1h1m2 0h4m3 0h4m6 0h2m-22 1h1m3 0h2m2 0h2m1 0h1m1 0h1m2 0h3m2 0h2m-25 1h1m1 0h2m1 0h1m1 0h3m1 0h3m1 0h1m3 0h1m1 0h2m4 0h1m-29 1h4m1 0h1m3 0h4m2 0h1m2 0h2m1 0h4m2 0h2m-29 1h2m3 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m1 0h4m-27 1h1m1 0h3m3 0h1m1 0h1m3 0h3m1 0h3m3 0h1m1 0h1m1 0h1m-29 1h4m2 0h1m2 0h2m1 0h1m2 0h5m5 0h2m-27 1h2m1 0h1m3 0h1m2 0h2m1 0h1m1 0h6m1 0h3m1 0h3m-29 1h3m2 0h2m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h2m2 0h1m-29 1h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h1m2 0h1m-25 1h1m2 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h6m1 0h3m-21 1h3m1 0h1m1 0h2m1 0h2m1 0h1m3 0h2m-26 1h7m2 0h2m4 0h2m1 0h3m1 0h1m1 0h3m-27 1h1m5 0h1m4 0h1m2 0h1m1 0h1m2 0h2m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m3 0h5m1 0h1m2 0h7m2 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h10m3 0h2m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h5m2 0h8m-28 1h1m5 0h1m5 0h1m2 0h1m7 0h4m1 0h1m-29 1h7m1 0h1m4 0h1m3 0h3m2 0h2m2 0h1"/></g></svg>
-      <div>Naskenujte fotoaparátom v telefóne alebo kliknite:<br>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 222" role="img" aria-label="QR code: https://maaaerekkkk.github.io/mlr-ex08/"><g transform="scale(6)"><path fill="#fff" d="M0 0h37v37h-37z"/><path class="qrline" stroke="#000" d="M4 4.5h7m4 0h3m2 0h2m4 0h7m-29 1h1m5 0h1m1 0h5m7 0h1m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m4 0h1m2 0h1m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h3m4 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h3m1 0h1m3 0h1m1 0h3m-21 1h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h2m2 0h3m-26 1h2m4 0h1m1 0h6m3 0h1m3 0h2m1 0h2m-25 1h1m2 0h4m3 0h4m6 0h2m-22 1h1m3 0h2m2 0h2m1 0h1m1 0h1m2 0h3m2 0h2m-25 1h1m1 0h2m1 0h1m1 0h3m1 0h3m1 0h1m3 0h1m1 0h2m4 0h1m-29 1h4m1 0h1m3 0h4m2 0h1m2 0h2m1 0h4m2 0h2m-29 1h2m3 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m1 0h4m-27 1h1m1 0h3m3 0h1m1 0h1m3 0h3m1 0h3m3 0h1m1 0h1m1 0h1m-29 1h4m2 0h1m2 0h2m1 0h1m2 0h5m5 0h2m-27 1h2m1 0h1m3 0h1m2 0h2m1 0h1m1 0h6m1 0h3m1 0h3m-29 1h3m2 0h2m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h2m2 0h1m-29 1h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h1m2 0h1m-25 1h1m2 0h1m2 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h6m1 0h3m-21 1h3m1 0h1m1 0h2m1 0h2m1 0h1m3 0h2m-26 1h7m2 0h2m4 0h2m1 0h3m1 0h1m1 0h3m-27 1h1m5 0h1m4 0h1m2 0h1m1 0h1m2 0h2m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m3 0h5m1 0h1m2 0h7m2 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h10m3 0h2m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h5m2 0h8m-28 1h1m5 0h1m5 0h1m2 0h1m7 0h4m1 0h1m-29 1h7m1 0h1m4 0h1m3 0h3m2 0h2m2 0h1"/></g></svg>
+      <div>Scan it with your phone camera or tap the link:<br>
         <a id="pageLink" href="https://maaaerekkkk.github.io/mlr-ex08/">https://maaaerekkkk.github.io/mlr-ex08/</a></div>
     </div>
   </footer>
-  <p class="note">Obrázok z kamery ani fotka neopúšťajú telefón – model beží priamo v prehliadači.</p>
+  <p class="note">Neither the camera image nor your photo leaves the phone – the model runs right in the browser.</p>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
@@ -221,19 +221,19 @@
     task2: { file: 'leaf_model.onnx', bytes: 6339031, name: 'Task 2 model',
              detail: 'MobileNetV3-Small', expected: 'check_expected.json' },
   };
-  const SK = { apple: 'Jabloň', cherry: 'Čerešňa', chestnut: 'Gaštan', maple: 'Javor' };
+  const NAMES = { apple: 'Apple', cherry: 'Cherry', chestnut: 'Chestnut', maple: 'Maple' };
   const UNSURE = 0.6;   // below this top probability the chip says "not sure"
 
   let info;
   try { info = await (await fetch('model_info.json', { cache: 'no-cache' })).json(); }
-  catch (e) { status('Chyba pri načítaní model_info.json: ' + e); return; }
+  catch (e) { status('Could not load model_info.json: ' + e); return; }
   const S = info.input_size, N = S * S, mean = info.mean, std = info.std;
 
   // Bars for all classes, each with its own color
   const rows = info.classes.map(c => {
     const r = document.createElement('div');
     r.className = 'row';
-    r.innerHTML = `<div class="head"><span class="lab">${SK[c] || c}<small>${c}</small></span><span class="val">–</span></div>` +
+    r.innerHTML = `<div class="head"><span class="lab">${NAMES[c] || c}</span><span class="val">–</span></div>` +
                   `<div class="track"><div class="fill" style="background: var(--${c}, var(--accent))"></div></div>`;
     $('bars').appendChild(r);
     return { fill: r.querySelector('.fill'), val: r.querySelector('.val') };
@@ -287,11 +287,11 @@
       chunks.push(value); got += value.length;
       const pct = Math.min(100, Math.round(100 * got / total));
       $('progressBar').style.width = pct + '%';
-      if (key === active) showModelInfo(`sťahujem ${pct} %`);
+      if (key === active) showModelInfo(`downloading ${pct} %`);
     }
     const buf = new Uint8Array(got);
     let off = 0; for (const c of chunks) { buf.set(c, off); off += c.length; }
-    if (key === active) showModelInfo('pripravujem…');
+    if (key === active) showModelInfo('preparing…');
     sessions[key] = await ort.InferenceSession.create(buf, { executionProviders: ['wasm'] });
     if (loadingKey === key) { loadingKey = null; $('progress').hidden = true; }
     return sessions[key];
@@ -299,16 +299,16 @@
   async function selectModel(key) {
     active = key;
     document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-checked', b.dataset.model === key));
-    showModelInfo(sessions[key] ? 'pripravený' : 'sťahujem…');
+    showModelInfo(sessions[key] ? 'ready' : 'downloading…');
     $('checkBtn').disabled = true; $('check').textContent = '';
     try {
       await loadModel(key);
       if (active !== key) return;
-      showModelInfo('pripravený');
+      showModelInfo('ready');
       $('checkBtn').disabled = false; $('camBtn').disabled = false;
       if (still) await classifyStill();   // re-classify the shown photo with the new model
-      else if (!running) status('Model je pripravený.');
-    } catch (e) { if (active === key) { showModelInfo('chyba'); status('Model sa nepodarilo načítať: ' + e.message); } }
+      else if (!running) status('The model is ready.');
+    } catch (e) { if (active === key) { showModelInfo('error'); status('Could not load the model: ' + e.message); } }
   }
 
   async function classify(src, w, h) {
@@ -324,7 +324,7 @@
     const best = p.indexOf(Math.max(...p)), c = info.classes[best], sure = p[best] >= UNSURE;
     $('chip').hidden = false;
     $('chip').classList.toggle('unsure', !sure);
-    $('topName').textContent = sure ? (SK[c] || c) : 'Nie som si istý';
+    $('topName').textContent = sure ? (NAMES[c] || c) : 'Not sure';
     $('topPct').textContent = Math.round(p[best] * 100) + ' %';
     $('chipDot').style.background = sure ? `var(--${c})` : 'var(--unsure)';
     p.forEach((v, i) => {
@@ -366,14 +366,14 @@
           const p = await classify(video, video.videoWidth, video.videoHeight);
           smooth = smooth ? smooth.map((s, i) => (1 - ALPHA) * s + ALPHA * p[i]) : p;
           show(smooth);
-        } catch (e) { status('Chyba: ' + e.message); }
+        } catch (e) { status('Error: ' + e.message); }
       }
       await new Promise(r => requestAnimationFrame(r));
     }
   }
   function setShutter(on) {
     $('camBtn').classList.toggle('on', on);
-    $('camBtn').setAttribute('aria-label', on ? 'Zastaviť kameru' : 'Spustiť kameru');
+    $('camBtn').setAttribute('aria-label', on ? 'Stop camera' : 'Start camera');
   }
   function stopCam() {
     running = false;
@@ -382,9 +382,9 @@
     setShutter(false);
   }
   $('camBtn').onclick = async () => {
-    if (stream) { stopCam(); status('Kamera je zastavená.'); return; }
+    if (stream) { stopCam(); status('Camera stopped.'); return; }
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      status('Kamera nie je dostupná (vyžaduje HTTPS). Použite nahranie fotky.'); return;
+      status('Camera not available (requires HTTPS). Please upload a photo.'); return;
     }
     try {
       stream = await navigator.mediaDevices.getUserMedia({
@@ -394,9 +394,9 @@
       still = null; smooth = null; shown = null;
       photo.hidden = true; video.hidden = false; $('hint').hidden = true;
       setShutter(true);
-      status('Kamera beží – výsledok sa priebežne aktualizuje.');
+      status('Camera running – the result updates live.');
       running = true; loop();
-    } catch (e) { stopCam(); status('Kameru sa nepodarilo spustiť: ' + e.name + ' – ' + e.message); }
+    } catch (e) { stopCam(); status('Could not start the camera: ' + e.name + ' – ' + e.message); }
   };
   document.addEventListener('visibilitychange', () => { if (document.hidden && stream) stopCam(); });
 
@@ -418,7 +418,7 @@
       } catch (e) { console.warn('mozjpeg failed, using the browser decoder', e); }
     }
     const img = new Image(); img.src = URL.createObjectURL(blob); await img.decode();
-    return { src: img, w: img.naturalWidth, h: img.naturalHeight, how: 'prehliadač' };
+    return { src: img, w: img.naturalWidth, h: img.naturalHeight, how: 'browser' };
   }
   async function showStill(blob, label) {
     stopCam();
@@ -429,16 +429,16 @@
   }
   let lastStill = null;   // raw (unsmoothed) probabilities of the shown photo
   async function classifyStill() {
-    if (!sessions[active]) { status('Čakám na model…'); return; }
+    if (!sessions[active]) { status('Waiting for the model…'); return; }
     lastStill = await classify(still.src, still.w, still.h);
     show(lastStill);
     window.__last = { model: active, probs: lastStill };
-    status(`${still.label}: ${still.w}×${still.h}, ${MODELS[active].name} (dekodér: ${still.how}).`);
+    status(`${still.label}: ${still.w}×${still.h}, ${MODELS[active].name} (decoder: ${still.how}).`);
   }
 
   $('file').onchange = async e => {
     const f = e.target.files[0]; if (!f) return;
-    try { await showStill(f, 'Fotka'); } catch (err) { status('Fotku sa nepodarilo spracovať: ' + err); }
+    try { await showStill(f, 'Photo'); } catch (err) { status('Could not process the photo: ' + err); }
     e.target.value = '';
   };
 
@@ -454,16 +454,16 @@
       const lines = info.classes.map((c, i) => {
         const d = Math.abs(lastStill[i] - exp[c]); maxDiff = Math.max(maxDiff, d);
         same3 = same3 && lastStill[i].toFixed(3) === exp[c].toFixed(3);
-        return `${c.padEnd(9)} ${lastStill[i].toFixed(3)}  očak. ${exp[c].toFixed(3)}`;
+        return `${c.padEnd(9)} ${lastStill[i].toFixed(3)}  expected ${exp[c].toFixed(3)}`;
       });
       $('check').innerHTML = `${MODELS[key].name} vs ${MODELS[key].expected}\n` + lines.join('\n') +
-        `\n<span class="${same3 ? 'ok' : 'bad'}">${same3 ? '✔ zhoda na 3 desatinné miesta' : '✘ nezhoda'}</span> (max Δ = ${maxDiff.toExponential(1)})`;
+        `\n<span class="${same3 ? 'ok' : 'bad'}">${same3 ? '✔ match to 3 decimals' : '✘ mismatch'}</span> (max Δ = ${maxDiff.toExponential(1)})`;
       window.__check = { model: key, same3, maxDiff, probs: lastStill };
-    } catch (e) { $('check').textContent = 'Chyba: ' + e; }
+    } catch (e) { $('check').textContent = 'Error: ' + e; }
   };
 
   document.querySelectorAll('.seg button').forEach(b => b.onclick = () => { if (b.dataset.model !== active) selectModel(b.dataset.model); });
-  status('Sťahujem model…');
+  status('Downloading model…');
   selectModel('final');   // the default model; the other one is downloaded only when selected
 })();
 </script>

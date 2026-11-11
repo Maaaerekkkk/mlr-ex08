@@ -1,0 +1,906 @@
+device: mps
+train 927 | val 90 | my val 32 | old val 58
+--- B0 seed 0
+epoch  1  training loss 0.7500  validation accuracy 0.822
+epoch  2  training loss 0.2454  validation accuracy 0.833
+epoch  3  training loss 0.1895  validation accuracy 0.822
+epoch  4  training loss 0.1153  validation accuracy 0.800
+epoch  5  training loss 0.1007  validation accuracy 0.800
+epoch  6  training loss 0.0646  validation accuracy 0.800
+epoch  7  training loss 0.0326  validation accuracy 0.822
+epoch  8  training loss 0.0464  validation accuracy 0.833
+epoch  9  training loss 0.0760  validation accuracy 0.844
+epoch 10  training loss 0.0548  validation accuracy 0.867
+epoch 11  training loss 0.0782  validation accuracy 0.800
+epoch 12  training loss 0.0611  validation accuracy 0.833
+epoch 13  training loss 0.0372  validation accuracy 0.856
+epoch 14  training loss 0.0575  validation accuracy 0.767
+epoch 15  training loss 0.0182  validation accuracy 0.811
+{'val_last': 0.8111111111111111, 'val_best': 0.8666666666666667, 'best_epoch': 10, 'camera_last': 0.8222222222222222, 'val_mine': 0.78125, 'val_old': 0.8275862068965517}
+[torch.onnx] Obtain model graph for `MobileNetV3([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `MobileNetV3([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+--- B0 seed 1
+epoch  1  training loss 0.7639  validation accuracy 0.744
+epoch  2  training loss 0.2353  validation accuracy 0.856
+epoch  3  training loss 0.1217  validation accuracy 0.878
+epoch  4  training loss 0.0920  validation accuracy 0.867
+epoch  5  training loss 0.1531  validation accuracy 0.767
+epoch  6  training loss 0.0965  validation accuracy 0.844
+epoch  7  training loss 0.0613  validation accuracy 0.889
+epoch  8  training loss 0.0481  validation accuracy 0.844
+epoch  9  training loss 0.0848  validation accuracy 0.833
+epoch 10  training loss 0.0816  validation accuracy 0.867
+epoch 11  training loss 0.0392  validation accuracy 0.856
+epoch 12  training loss 0.0222  validation accuracy 0.856
+epoch 13  training loss 0.0327  validation accuracy 0.811
+epoch 14  training loss 0.0489  validation accuracy 0.878
+epoch 15  training loss 0.0697  validation accuracy 0.878
+{'val_last': 0.8777777777777778, 'val_best': 0.8888888888888888, 'best_epoch': 7, 'camera_last': 0.7518518518518519, 'val_mine': 0.875, 'val_old': 0.8793103448275862}
+--- B0 seed 2
+epoch  1  training loss 0.7355  validation accuracy 0.789
+epoch  2  training loss 0.2884  validation accuracy 0.822
+epoch  3  training loss 0.1389  validation accuracy 0.867
+epoch  4  training loss 0.0624  validation accuracy 0.867
+epoch  5  training loss 0.0755  validation accuracy 0.878
+epoch  6  training loss 0.0852  validation accuracy 0.867
+epoch  7  training loss 0.1079  validation accuracy 0.844
+epoch  8  training loss 0.0798  validation accuracy 0.800
+epoch  9  training loss 0.0854  validation accuracy 0.844
+epoch 10  training loss 0.0390  validation accuracy 0.833
+epoch 11  training loss 0.0472  validation accuracy 0.822
+epoch 12  training loss 0.1182  validation accuracy 0.722
+epoch 13  training loss 0.0847  validation accuracy 0.900
+epoch 14  training loss 0.0459  validation accuracy 0.889
+epoch 15  training loss 0.0099  validation accuracy 0.900
+{'val_last': 0.9, 'val_best': 0.9, 'best_epoch': 13, 'camera_last': 0.825925925925926, 'val_mine': 0.875, 'val_old': 0.9137931034482759}
+--- A1 seed 0
+epoch  1  training loss 0.8115  validation accuracy 0.811
+epoch  2  training loss 0.4975  validation accuracy 0.867
+epoch  3  training loss 0.4352  validation accuracy 0.867
+epoch  4  training loss 0.3519  validation accuracy 0.856
+epoch  5  training loss 0.2866  validation accuracy 0.822
+epoch  6  training loss 0.3115  validation accuracy 0.800
+epoch  7  training loss 0.2653  validation accuracy 0.800
+epoch  8  training loss 0.3030  validation accuracy 0.889
+epoch  9  training loss 0.2292  validation accuracy 0.889
+epoch 10  training loss 0.2398  validation accuracy 0.878
+epoch 11  training loss 0.2204  validation accuracy 0.856
+epoch 12  training loss 0.2555  validation accuracy 0.856
+epoch 13  training loss 0.2582  validation accuracy 0.911
+epoch 14  training loss 0.1731  validation accuracy 0.878
+epoch 15  training loss 0.1795  validation accuracy 0.911
+{'val_last': 0.9111111111111111, 'val_best': 0.9111111111111111, 'best_epoch': 13, 'camera_last': 0.8888888888888888, 'val_mine': 0.9375, 'val_old': 0.896551724137931}
+--- A1 seed 1
+epoch  1  training loss 0.7969  validation accuracy 0.633
+epoch  2  training loss 0.5449  validation accuracy 0.811
+epoch  3  training loss 0.3782  validation accuracy 0.822
+epoch  4  training loss 0.3975  validation accuracy 0.789
+epoch  5  training loss 0.3380  validation accuracy 0.800
+epoch  6  training loss 0.2541  validation accuracy 0.867
+epoch  7  training loss 0.2622  validation accuracy 0.822
+epoch  8  training loss 0.2359  validation accuracy 0.878
+epoch  9  training loss 0.2270  validation accuracy 0.856
+epoch 10  training loss 0.2553  validation accuracy 0.844
+epoch 11  training loss 0.2076  validation accuracy 0.822
+epoch 12  training loss 0.2155  validation accuracy 0.800
+epoch 13  training loss 0.2004  validation accuracy 0.844
+epoch 14  training loss 0.2501  validation accuracy 0.767
+epoch 15  training loss 0.2390  validation accuracy 0.789
+{'val_last': 0.7888888888888889, 'val_best': 0.8777777777777778, 'best_epoch': 8, 'camera_last': 0.8148148148148148, 'val_mine': 0.71875, 'val_old': 0.8275862068965517}
+--- A1 seed 2
+epoch  1  training loss 0.8252  validation accuracy 0.756
+epoch  2  training loss 0.4921  validation accuracy 0.744
+epoch  3  training loss 0.3914  validation accuracy 0.789
+epoch  4  training loss 0.3372  validation accuracy 0.822
+epoch  5  training loss 0.3310  validation accuracy 0.844
+epoch  6  training loss 0.3018  validation accuracy 0.833
+epoch  7  training loss 0.3042  validation accuracy 0.856
+epoch  8  training loss 0.2718  validation accuracy 0.833
+epoch  9  training loss 0.2254  validation accuracy 0.889
+epoch 10  training loss 0.2590  validation accuracy 0.867
+epoch 11  training loss 0.2606  validation accuracy 0.878
+epoch 12  training loss 0.2521  validation accuracy 0.833
+epoch 13  training loss 0.1923  validation accuracy 0.833
+epoch 14  training loss 0.2346  validation accuracy 0.822
+epoch 15  training loss 0.1750  validation accuracy 0.889
+{'val_last': 0.8888888888888888, 'val_best': 0.8888888888888888, 'best_epoch': 9, 'camera_last': 0.9111111111111111, 'val_mine': 0.84375, 'val_old': 0.9137931034482759}
+--- A2 seed 0
+epoch  1  training loss 0.7500  validation accuracy 0.822
+epoch  2  training loss 0.2460  validation accuracy 0.833
+epoch  3  training loss 0.1959  validation accuracy 0.833
+epoch  4  training loss 0.1210  validation accuracy 0.800
+epoch  5  training loss 0.0796  validation accuracy 0.833
+epoch  6  training loss 0.0346  validation accuracy 0.856
+epoch  7  training loss 0.0324  validation accuracy 0.833
+epoch  8  training loss 0.0153  validation accuracy 0.889
+epoch  9  training loss 0.0541  validation accuracy 0.867
+epoch 10  training loss 0.0434  validation accuracy 0.867
+epoch 11  training loss 0.0313  validation accuracy 0.844
+epoch 12  training loss 0.0614  validation accuracy 0.789
+epoch 13  training loss 0.0599  validation accuracy 0.878
+epoch 14  training loss 0.0414  validation accuracy 0.867
+epoch 15  training loss 0.0206  validation accuracy 0.933
+epoch 16  training loss 0.0084  validation accuracy 0.889
+epoch 17  training loss 0.0098  validation accuracy 0.900
+epoch 18  training loss 0.0096  validation accuracy 0.900
+epoch 19  training loss 0.0075  validation accuracy 0.900
+epoch 20  training loss 0.0040  validation accuracy 0.900
+epoch 21  training loss 0.0014  validation accuracy 0.900
+epoch 22  training loss 0.0024  validation accuracy 0.889
+epoch 23  training loss 0.0023  validation accuracy 0.889
+epoch 24  training loss 0.0057  validation accuracy 0.900
+epoch 25  training loss 0.0013  validation accuracy 0.900
+epoch 26  training loss 0.0021  validation accuracy 0.911
+epoch 27  training loss 0.0009  validation accuracy 0.911
+epoch 28  training loss 0.0029  validation accuracy 0.911
+epoch 29  training loss 0.0009  validation accuracy 0.911
+epoch 30  training loss 0.0007  validation accuracy 0.911
+{'val_last': 0.9111111111111111, 'val_best': 0.9333333333333333, 'best_epoch': 15, 'camera_last': 0.8074074074074075, 'val_mine': 0.90625, 'val_old': 0.9137931034482759}
+--- A2 seed 1
+epoch  1  training loss 0.7639  validation accuracy 0.744
+epoch  2  training loss 0.2358  validation accuracy 0.878
+epoch  3  training loss 0.1247  validation accuracy 0.878
+epoch  4  training loss 0.0831  validation accuracy 0.900
+epoch  5  training loss 0.1359  validation accuracy 0.922
+epoch  6  training loss 0.1101  validation accuracy 0.878
+epoch  7  training loss 0.0644  validation accuracy 0.922
+epoch  8  training loss 0.0498  validation accuracy 0.889
+epoch  9  training loss 0.0321  validation accuracy 0.822
+epoch 10  training loss 0.0240  validation accuracy 0.856
+epoch 11  training loss 0.0175  validation accuracy 0.878
+epoch 12  training loss 0.0232  validation accuracy 0.900
+epoch 13  training loss 0.0149  validation accuracy 0.900
+epoch 14  training loss 0.0072  validation accuracy 0.844
+epoch 15  training loss 0.0275  validation accuracy 0.867
+epoch 16  training loss 0.0356  validation accuracy 0.933
+epoch 17  training loss 0.0091  validation accuracy 0.911
+epoch 18  training loss 0.0070  validation accuracy 0.922
+epoch 19  training loss 0.0040  validation accuracy 0.911
+epoch 20  training loss 0.0011  validation accuracy 0.911
+epoch 21  training loss 0.0012  validation accuracy 0.911
+epoch 22  training loss 0.0068  validation accuracy 0.911
+epoch 23  training loss 0.0058  validation accuracy 0.911
+epoch 24  training loss 0.0021  validation accuracy 0.911
+epoch 25  training loss 0.0008  validation accuracy 0.911
+epoch 26  training loss 0.0008  validation accuracy 0.911
+epoch 27  training loss 0.0013  validation accuracy 0.911
+epoch 28  training loss 0.0012  validation accuracy 0.911
+epoch 29  training loss 0.0007  validation accuracy 0.911
+epoch 30  training loss 0.0007  validation accuracy 0.911
+{'val_last': 0.9111111111111111, 'val_best': 0.9333333333333333, 'best_epoch': 16, 'camera_last': 0.8148148148148148, 'val_mine': 0.84375, 'val_old': 0.9482758620689655}
+--- A2 seed 2
+epoch  1  training loss 0.7355  validation accuracy 0.789
+epoch  2  training loss 0.2880  validation accuracy 0.833
+epoch  3  training loss 0.1380  validation accuracy 0.867
+epoch  4  training loss 0.0652  validation accuracy 0.856
+epoch  5  training loss 0.0850  validation accuracy 0.856
+epoch  6  training loss 0.0868  validation accuracy 0.844
+epoch  7  training loss 0.1206  validation accuracy 0.856
+epoch  8  training loss 0.0840  validation accuracy 0.744
+epoch  9  training loss 0.0426  validation accuracy 0.867
+epoch 10  training loss 0.0316  validation accuracy 0.856
+epoch 11  training loss 0.0207  validation accuracy 0.889
+epoch 12  training loss 0.0279  validation accuracy 0.889
+epoch 13  training loss 0.0202  validation accuracy 0.878
+epoch 14  training loss 0.0106  validation accuracy 0.900
+epoch 15  training loss 0.0056  validation accuracy 0.844
+epoch 16  training loss 0.0087  validation accuracy 0.822
+epoch 17  training loss 0.0032  validation accuracy 0.889
+epoch 18  training loss 0.0037  validation accuracy 0.889
+epoch 19  training loss 0.0032  validation accuracy 0.878
+epoch 20  training loss 0.0012  validation accuracy 0.878
+epoch 21  training loss 0.0016  validation accuracy 0.878
+epoch 22  training loss 0.0046  validation accuracy 0.900
+epoch 23  training loss 0.0006  validation accuracy 0.889
+epoch 24  training loss 0.0054  validation accuracy 0.900
+epoch 25  training loss 0.0005  validation accuracy 0.900
+epoch 26  training loss 0.0006  validation accuracy 0.900
+epoch 27  training loss 0.0005  validation accuracy 0.900
+epoch 28  training loss 0.0004  validation accuracy 0.900
+epoch 29  training loss 0.0006  validation accuracy 0.900
+epoch 30  training loss 0.0010  validation accuracy 0.900
+{'val_last': 0.9, 'val_best': 0.9, 'best_epoch': 14, 'camera_last': 0.8222222222222222, 'val_mine': 0.875, 'val_old': 0.9137931034482759}
+--- A3 seed 0
+epoch  1  training loss 0.5017  validation accuracy 0.700
+epoch  2  training loss 0.1461  validation accuracy 0.700
+epoch  3  training loss 0.1068  validation accuracy 0.856
+epoch  4  training loss 0.1139  validation accuracy 0.889
+epoch  5  training loss 0.0512  validation accuracy 0.889
+epoch  6  training loss 0.0535  validation accuracy 0.878
+epoch  7  training loss 0.0490  validation accuracy 0.944
+epoch  8  training loss 0.0727  validation accuracy 0.911
+epoch  9  training loss 0.0565  validation accuracy 0.944
+epoch 10  training loss 0.0313  validation accuracy 0.933
+epoch 11  training loss 0.0141  validation accuracy 0.956
+epoch 12  training loss 0.0428  validation accuracy 0.933
+epoch 13  training loss 0.0289  validation accuracy 0.944
+epoch 14  training loss 0.0163  validation accuracy 0.944
+epoch 15  training loss 0.0263  validation accuracy 0.956
+{'val_last': 0.9555555555555556, 'val_best': 0.9555555555555556, 'best_epoch': 11, 'camera_last': 0.8185185185185185, 'val_mine': 0.90625, 'val_old': 0.9827586206896551}
+[torch.onnx] Obtain model graph for `Sequential([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `Sequential([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+--- A3 seed 1
+epoch  1  training loss 0.5115  validation accuracy 0.811
+epoch  2  training loss 0.1870  validation accuracy 0.822
+epoch  3  training loss 0.1071  validation accuracy 0.856
+epoch  4  training loss 0.0550  validation accuracy 0.822
+epoch  5  training loss 0.0354  validation accuracy 0.900
+epoch  6  training loss 0.1144  validation accuracy 0.844
+epoch  7  training loss 0.1120  validation accuracy 0.900
+epoch  8  training loss 0.0490  validation accuracy 0.922
+epoch  9  training loss 0.0366  validation accuracy 0.900
+epoch 10  training loss 0.0362  validation accuracy 0.856
+epoch 11  training loss 0.0205  validation accuracy 0.922
+epoch 12  training loss 0.0106  validation accuracy 0.944
+epoch 13  training loss 0.0120  validation accuracy 0.900
+epoch 14  training loss 0.0275  validation accuracy 0.911
+epoch 15  training loss 0.0560  validation accuracy 0.811
+{'val_last': 0.8111111111111111, 'val_best': 0.9444444444444444, 'best_epoch': 12, 'camera_last': 0.7666666666666667, 'val_mine': 0.71875, 'val_old': 0.8620689655172413}
+--- A3 seed 2
+epoch  1  training loss 0.5064  validation accuracy 0.822
+epoch  2  training loss 0.2136  validation accuracy 0.900
+epoch  3  training loss 0.1080  validation accuracy 0.744
+epoch  4  training loss 0.0614  validation accuracy 0.844
+epoch  5  training loss 0.0618  validation accuracy 0.911
+epoch  6  training loss 0.0425  validation accuracy 0.767
+epoch  7  training loss 0.1730  validation accuracy 0.867
+epoch  8  training loss 0.0473  validation accuracy 0.889
+epoch  9  training loss 0.0268  validation accuracy 0.889
+epoch 10  training loss 0.0219  validation accuracy 0.900
+epoch 11  training loss 0.0272  validation accuracy 0.867
+epoch 12  training loss 0.0322  validation accuracy 0.878
+epoch 13  training loss 0.0278  validation accuracy 0.889
+epoch 14  training loss 0.0202  validation accuracy 0.844
+epoch 15  training loss 0.0120  validation accuracy 0.911
+{'val_last': 0.9111111111111111, 'val_best': 0.9111111111111111, 'best_epoch': 5, 'camera_last': 0.7666666666666667, 'val_mine': 0.90625, 'val_old': 0.9137931034482759}
+--- A4 seed 0
+Downloading: "https://download.pytorch.org/models/mobilenet_v3_large-5c1a4163.pth" to /Users/marekkollar/.cache/torch/hub/checkpoints/mobilenet_v3_large-5c1a4163.pth
+  0%|          | 0.00/21.1M [00:00<?, ?B/s]  1%|          | 128k/21.1M [00:00<00:21, 1.03MB/s]  4%|▍         | 896k/21.1M [00:00<00:06, 3.25MB/s] 17%|█▋        | 3.50M/21.1M [00:00<00:01, 11.6MB/s] 29%|██▉       | 6.12M/21.1M [00:00<00:00, 16.6MB/s] 38%|███▊      | 8.00M/21.1M [00:00<00:00, 16.6MB/s] 46%|████▌     | 9.75M/21.1M [00:00<00:00, 13.8MB/s] 63%|██████▎   | 13.4M/21.1M [00:00<00:00, 19.7MB/s] 80%|███████▉  | 16.9M/21.1M [00:01<00:00, 24.0MB/s] 92%|█████████▏| 19.5M/21.1M [00:01<00:00, 22.3MB/s]100%|██████████| 21.1M/21.1M [00:01<00:00, 17.9MB/s]
+epoch  1  training loss 0.6091  validation accuracy 0.778
+epoch  2  training loss 0.2323  validation accuracy 0.867
+epoch  3  training loss 0.1953  validation accuracy 0.889
+epoch  4  training loss 0.0803  validation accuracy 0.900
+epoch  5  training loss 0.0935  validation accuracy 0.889
+epoch  6  training loss 0.0776  validation accuracy 0.833
+epoch  7  training loss 0.0537  validation accuracy 0.867
+epoch  8  training loss 0.0439  validation accuracy 0.889
+epoch  9  training loss 0.0483  validation accuracy 0.922
+epoch 10  training loss 0.0299  validation accuracy 0.911
+epoch 11  training loss 0.0360  validation accuracy 0.867
+epoch 12  training loss 0.0531  validation accuracy 0.922
+epoch 13  training loss 0.0614  validation accuracy 0.878
+epoch 14  training loss 0.0408  validation accuracy 0.889
+epoch 15  training loss 0.0436  validation accuracy 0.911
+{'val_last': 0.9111111111111111, 'val_best': 0.9222222222222223, 'best_epoch': 9, 'camera_last': 0.7296296296296296, 'val_mine': 0.84375, 'val_old': 0.9482758620689655}
+[torch.onnx] Obtain model graph for `MobileNetV3([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `MobileNetV3([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+--- A4 seed 1
+epoch  1  training loss 0.6461  validation accuracy 0.878
+epoch  2  training loss 0.2512  validation accuracy 0.822
+epoch  3  training loss 0.1281  validation accuracy 0.811
+epoch  4  training loss 0.1080  validation accuracy 0.922
+epoch  5  training loss 0.0665  validation accuracy 0.922
+epoch  6  training loss 0.0827  validation accuracy 0.856
+epoch  7  training loss 0.0981  validation accuracy 0.933
+epoch  8  training loss 0.0806  validation accuracy 0.900
+epoch  9  training loss 0.0545  validation accuracy 0.922
+epoch 10  training loss 0.0430  validation accuracy 0.933
+epoch 11  training loss 0.0789  validation accuracy 0.911
+epoch 12  training loss 0.0467  validation accuracy 0.878
+epoch 13  training loss 0.0207  validation accuracy 0.900
+epoch 14  training loss 0.0189  validation accuracy 0.911
+epoch 15  training loss 0.0400  validation accuracy 0.944
+{'val_last': 0.9444444444444444, 'val_best': 0.9444444444444444, 'best_epoch': 15, 'camera_last': 0.8555555555555555, 'val_mine': 0.9375, 'val_old': 0.9482758620689655}
+--- A4 seed 2
+epoch  1  training loss 0.6109  validation accuracy 0.856
+epoch  2  training loss 0.2604  validation accuracy 0.789
+epoch  3  training loss 0.1483  validation accuracy 0.900
+epoch  4  training loss 0.0638  validation accuracy 0.878
+epoch  5  training loss 0.0991  validation accuracy 0.867
+epoch  6  training loss 0.1056  validation accuracy 0.867
+epoch  7  training loss 0.0885  validation accuracy 0.856
+epoch  8  training loss 0.0586  validation accuracy 0.889
+epoch  9  training loss 0.0488  validation accuracy 0.922
+epoch 10  training loss 0.0415  validation accuracy 0.900
+epoch 11  training loss 0.0090  validation accuracy 0.878
+epoch 12  training loss 0.1110  validation accuracy 0.867
+epoch 13  training loss 0.0833  validation accuracy 0.878
+epoch 14  training loss 0.0539  validation accuracy 0.922
+epoch 15  training loss 0.1175  validation accuracy 0.833
+{'val_last': 0.8333333333333334, 'val_best': 0.9222222222222223, 'best_epoch': 9, 'camera_last': 0.6370370370370371, 'val_mine': 0.75, 'val_old': 0.8793103448275862}
+--- A5 seed 0
+Downloading: "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth" to /Users/marekkollar/.cache/torch/hub/checkpoints/efficientnet_b0_rwightman-7f5810bc.pth
+  0%|          | 0.00/20.5M [00:00<?, ?B/s]  2%|▏         | 512k/20.5M [00:00<00:04, 4.85MB/s]  5%|▍         | 1.00M/20.5M [00:00<00:05, 3.63MB/s] 12%|█▏        | 2.38M/20.5M [00:00<00:03, 5.70MB/s] 20%|██        | 4.12M/20.5M [00:00<00:01, 9.01MB/s] 30%|██▉       | 6.12M/20.5M [00:00<00:01, 11.8MB/s] 36%|███▌      | 7.38M/20.5M [00:00<00:01, 11.1MB/s] 42%|████▏     | 8.62M/20.5M [00:00<00:01, 10.0MB/s] 53%|█████▎    | 10.8M/20.5M [00:01<00:00, 13.1MB/s] 64%|██████▎   | 13.0M/20.5M [00:01<00:00, 15.6MB/s] 72%|███████▏  | 14.6M/20.5M [00:01<00:00, 14.9MB/s] 85%|████████▍ | 17.4M/20.5M [00:01<00:00, 15.1MB/s] 95%|█████████▌| 19.5M/20.5M [00:01<00:00, 16.8MB/s]100%|██████████| 20.5M/20.5M [00:01<00:00, 13.1MB/s]
+epoch  1  training loss 0.6152  validation accuracy 0.933
+epoch  2  training loss 0.2493  validation accuracy 0.856
+epoch  3  training loss 0.2342  validation accuracy 0.889
+epoch  4  training loss 0.1533  validation accuracy 0.867
+epoch  5  training loss 0.1221  validation accuracy 0.844
+epoch  6  training loss 0.0898  validation accuracy 0.889
+epoch  7  training loss 0.0845  validation accuracy 0.889
+epoch  8  training loss 0.0773  validation accuracy 0.856
+epoch  9  training loss 0.0525  validation accuracy 0.867
+epoch 10  training loss 0.0842  validation accuracy 0.889
+epoch 11  training loss 0.0828  validation accuracy 0.889
+epoch 12  training loss 0.1231  validation accuracy 0.911
+epoch 13  training loss 0.1388  validation accuracy 0.889
+epoch 14  training loss 0.0422  validation accuracy 0.889
+epoch 15  training loss 0.0435  validation accuracy 0.878
+{'val_last': 0.8777777777777778, 'val_best': 0.9333333333333333, 'best_epoch': 1, 'camera_last': 0.8481481481481481, 'val_mine': 0.875, 'val_old': 0.8793103448275862}
+[torch.onnx] Obtain model graph for `EfficientNet([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `EfficientNet([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+--- A5 seed 1
+epoch  1  training loss 0.6362  validation accuracy 0.889
+epoch  2  training loss 0.2961  validation accuracy 0.867
+epoch  3  training loss 0.1568  validation accuracy 0.922
+epoch  4  training loss 0.1333  validation accuracy 0.889
+epoch  5  training loss 0.1106  validation accuracy 0.911
+epoch  6  training loss 0.1222  validation accuracy 0.922
+epoch  7  training loss 0.0914  validation accuracy 0.944
+epoch  8  training loss 0.0814  validation accuracy 0.944
+epoch  9  training loss 0.1140  validation accuracy 0.911
+epoch 10  training loss 0.0724  validation accuracy 0.933
+epoch 11  training loss 0.0625  validation accuracy 0.956
+epoch 12  training loss 0.0778  validation accuracy 0.933
+epoch 13  training loss 0.0740  validation accuracy 0.900
+epoch 14  training loss 0.0979  validation accuracy 0.889
+epoch 15  training loss 0.0466  validation accuracy 0.922
+{'val_last': 0.9222222222222223, 'val_best': 0.9555555555555556, 'best_epoch': 11, 'camera_last': 0.8555555555555555, 'val_mine': 0.875, 'val_old': 0.9482758620689655}
+--- A5 seed 2
+epoch  1  training loss 0.6493  validation accuracy 0.900
+epoch  2  training loss 0.3166  validation accuracy 0.867
+epoch  3  training loss 0.1726  validation accuracy 0.889
+epoch  4  training loss 0.1389  validation accuracy 0.856
+epoch  5  training loss 0.1444  validation accuracy 0.933
+epoch  6  training loss 0.0985  validation accuracy 0.856
+epoch  7  training loss 0.1430  validation accuracy 0.911
+epoch  8  training loss 0.0795  validation accuracy 0.900
+epoch  9  training loss 0.0422  validation accuracy 0.911
+epoch 10  training loss 0.0799  validation accuracy 0.922
+epoch 11  training loss 0.0841  validation accuracy 0.867
+epoch 12  training loss 0.1278  validation accuracy 0.922
+epoch 13  training loss 0.0759  validation accuracy 0.933
+epoch 14  training loss 0.0447  validation accuracy 0.944
+epoch 15  training loss 0.0317  validation accuracy 0.922
+{'val_last': 0.9222222222222223, 'val_best': 0.9444444444444444, 'best_epoch': 14, 'camera_last': 0.8703703703703703, 'val_mine': 0.84375, 'val_old': 0.9655172413793104}
+--- A6 seed 0
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /Users/marekkollar/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+  0%|          | 0.00/44.7M [00:00<?, ?B/s]  1%|          | 256k/44.7M [00:00<00:19, 2.38MB/s]  3%|▎         | 1.12M/44.7M [00:00<00:11, 3.96MB/s]  5%|▌         | 2.38M/44.7M [00:00<00:06, 6.73MB/s]  8%|▊         | 3.38M/44.7M [00:00<00:05, 7.83MB/s] 10%|▉         | 4.25M/44.7M [00:00<00:06, 6.68MB/s] 12%|█▏        | 5.25M/44.7M [00:00<00:05, 7.06MB/s] 17%|█▋        | 7.38M/44.7M [00:00<00:03, 10.9MB/s] 19%|█▉        | 8.62M/44.7M [00:01<00:03, 11.5MB/s] 22%|██▏       | 9.88M/44.7M [00:01<00:03, 9.64MB/s] 25%|██▍       | 11.0M/44.7M [00:01<00:03, 9.48MB/s] 30%|██▉       | 13.4M/44.7M [00:01<00:02, 13.0MB/s] 34%|███▍      | 15.1M/44.7M [00:01<00:02, 14.3MB/s] 37%|███▋      | 16.6M/44.7M [00:01<00:02, 11.9MB/s] 40%|████      | 18.0M/44.7M [00:01<00:02, 10.6MB/s] 46%|████▌     | 20.4M/44.7M [00:02<00:01, 13.6MB/s] 50%|████▉     | 22.2M/44.7M [00:02<00:01, 12.2MB/s] 55%|█████▍    | 24.5M/44.7M [00:02<00:01, 12.0MB/s] 60%|█████▉    | 26.8M/44.7M [00:02<00:01, 14.2MB/s] 64%|██████▍   | 28.5M/44.7M [00:02<00:01, 12.1MB/s] 69%|██████▊   | 30.6M/44.7M [00:02<00:01, 11.8MB/s] 73%|███████▎  | 32.6M/44.7M [00:03<00:00, 13.5MB/s] 78%|███████▊  | 34.6M/44.7M [00:03<00:00, 12.0MB/s] 85%|████████▍ | 37.8M/44.7M [00:03<00:00, 13.9MB/s] 91%|█████████ | 40.6M/44.7M [00:03<00:00, 16.5MB/s] 97%|█████████▋| 43.4M/44.7M [00:03<00:00, 19.0MB/s]100%|██████████| 44.7M/44.7M [00:03<00:00, 12.3MB/s]
+epoch  1  training loss 0.7722  validation accuracy 0.700
+epoch  2  training loss 0.3558  validation accuracy 0.856
+epoch  3  training loss 0.2851  validation accuracy 0.867
+epoch  4  training loss 0.1832  validation accuracy 0.811
+epoch  5  training loss 0.1379  validation accuracy 0.678
+epoch  6  training loss 0.1848  validation accuracy 0.778
+epoch  7  training loss 0.0970  validation accuracy 0.867
+epoch  8  training loss 0.0828  validation accuracy 0.867
+epoch  9  training loss 0.0518  validation accuracy 0.900
+epoch 10  training loss 0.0879  validation accuracy 0.711
+epoch 11  training loss 0.1316  validation accuracy 0.833
+epoch 12  training loss 0.0837  validation accuracy 0.878
+epoch 13  training loss 0.1186  validation accuracy 0.867
+epoch 14  training loss 0.0612  validation accuracy 0.833
+epoch 15  training loss 0.0966  validation accuracy 0.900
+{'val_last': 0.9, 'val_best': 0.9, 'best_epoch': 9, 'camera_last': 0.7555555555555555, 'val_mine': 0.875, 'val_old': 0.9137931034482759}
+[torch.onnx] Obtain model graph for `ResNet([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `ResNet([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+--- A6 seed 1
+epoch  1  training loss 0.7156  validation accuracy 0.678
+epoch  2  training loss 0.3613  validation accuracy 0.867
+epoch  3  training loss 0.2163  validation accuracy 0.856
+epoch  4  training loss 0.1469  validation accuracy 0.789
+epoch  5  training loss 0.2821  validation accuracy 0.789
+epoch  6  training loss 0.1666  validation accuracy 0.856
+epoch  7  training loss 0.1581  validation accuracy 0.833
+epoch  8  training loss 0.1405  validation accuracy 0.844
+epoch  9  training loss 0.0867  validation accuracy 0.911
+epoch 10  training loss 0.0486  validation accuracy 0.900
+epoch 11  training loss 0.0647  validation accuracy 0.878
+epoch 12  training loss 0.1035  validation accuracy 0.789
+epoch 13  training loss 0.0768  validation accuracy 0.833
+epoch 14  training loss 0.1125  validation accuracy 0.822
+epoch 15  training loss 0.0662  validation accuracy 0.811
+{'val_last': 0.8111111111111111, 'val_best': 0.9111111111111111, 'best_epoch': 9, 'camera_last': 0.6407407407407407, 'val_mine': 0.75, 'val_old': 0.8448275862068966}
+--- A6 seed 2
+epoch  1  training loss 0.7742  validation accuracy 0.778
+epoch  2  training loss 0.3761  validation accuracy 0.811
+epoch  3  training loss 0.2152  validation accuracy 0.878
+epoch  4  training loss 0.1502  validation accuracy 0.867
+epoch  5  training loss 0.1285  validation accuracy 0.856
+epoch  6  training loss 0.1467  validation accuracy 0.811
+epoch  7  training loss 0.1668  validation accuracy 0.789
+epoch  8  training loss 0.0808  validation accuracy 0.922
+epoch  9  training loss 0.0745  validation accuracy 0.878
+epoch 10  training loss 0.0984  validation accuracy 0.800
+epoch 11  training loss 0.1591  validation accuracy 0.856
+epoch 12  training loss 0.0826  validation accuracy 0.856
+epoch 13  training loss 0.0673  validation accuracy 0.867
+epoch 14  training loss 0.0515  validation accuracy 0.844
+epoch 15  training loss 0.0182  validation accuracy 0.922
+{'val_last': 0.9222222222222223, 'val_best': 0.9222222222222223, 'best_epoch': 8, 'camera_last': 0.7444444444444445, 'val_mine': 0.9375, 'val_old': 0.9137931034482759}
+--- A7 seed 0
+epoch  1  training loss 1.2802  validation accuracy 0.511
+epoch  2  training loss 0.8472  validation accuracy 0.722
+epoch  3  training loss 0.6155  validation accuracy 0.756
+epoch  4  training loss 0.4309  validation accuracy 0.878
+epoch  5  training loss 0.3316  validation accuracy 0.844
+epoch  6  training loss 0.2425  validation accuracy 0.867
+epoch  7  training loss 0.1815  validation accuracy 0.856
+epoch  8  training loss 0.1462  validation accuracy 0.856
+epoch  9  training loss 0.1103  validation accuracy 0.867
+epoch 10  training loss 0.0888  validation accuracy 0.856
+epoch 11  training loss 0.0696  validation accuracy 0.878
+epoch 12  training loss 0.0573  validation accuracy 0.856
+epoch 13  training loss 0.0407  validation accuracy 0.878
+epoch 14  training loss 0.0327  validation accuracy 0.878
+epoch 15  training loss 0.0294  validation accuracy 0.856
+{'val_last': 0.8555555555555555, 'val_best': 0.8777777777777778, 'best_epoch': 4, 'camera_last': 0.7925925925925926, 'val_mine': 0.84375, 'val_old': 0.8620689655172413}
+--- A7 seed 1
+epoch  1  training loss 1.2110  validation accuracy 0.567
+epoch  2  training loss 0.8024  validation accuracy 0.733
+epoch  3  training loss 0.5500  validation accuracy 0.811
+epoch  4  training loss 0.4000  validation accuracy 0.844
+epoch  5  training loss 0.2877  validation accuracy 0.844
+epoch  6  training loss 0.2291  validation accuracy 0.878
+epoch  7  training loss 0.1666  validation accuracy 0.867
+epoch  8  training loss 0.1334  validation accuracy 0.900
+epoch  9  training loss 0.0988  validation accuracy 0.900
+epoch 10  training loss 0.0807  validation accuracy 0.911
+epoch 11  training loss 0.0601  validation accuracy 0.889
+epoch 12  training loss 0.0478  validation accuracy 0.944
+epoch 13  training loss 0.0484  validation accuracy 0.944
+epoch 14  training loss 0.0316  validation accuracy 0.933
+epoch 15  training loss 0.0307  validation accuracy 0.944
+{'val_last': 0.9444444444444444, 'val_best': 0.9444444444444444, 'best_epoch': 12, 'camera_last': 0.8037037037037037, 'val_mine': 0.9375, 'val_old': 0.9482758620689655}
+--- A7 seed 2
+epoch  1  training loss 1.2598  validation accuracy 0.533
+epoch  2  training loss 0.8000  validation accuracy 0.744
+epoch  3  training loss 0.5501  validation accuracy 0.811
+epoch  4  training loss 0.4140  validation accuracy 0.822
+epoch  5  training loss 0.3073  validation accuracy 0.867
+epoch  6  training loss 0.2436  validation accuracy 0.900
+epoch  7  training loss 0.1818  validation accuracy 0.878
+epoch  8  training loss 0.1401  validation accuracy 0.878
+epoch  9  training loss 0.1146  validation accuracy 0.889
+epoch 10  training loss 0.0821  validation accuracy 0.900
+epoch 11  training loss 0.0654  validation accuracy 0.911
+epoch 12  training loss 0.0545  validation accuracy 0.889
+epoch 13  training loss 0.0445  validation accuracy 0.878
+epoch 14  training loss 0.0435  validation accuracy 0.878
+epoch 15  training loss 0.0244  validation accuracy 0.900
+{'val_last': 0.9, 'val_best': 0.9111111111111111, 'best_epoch': 11, 'camera_last': 0.7888888888888889, 'val_mine': 0.84375, 'val_old': 0.9310344827586207}
+
+variant         val_last         val_best       best_epoch      camera_last         val_mine          val_old
+B0         0.863 ± 0.046    0.885 ± 0.017   10.000 ± 3.000    0.800 ± 0.042    0.844 ± 0.054    0.874 ± 0.043
+A1         0.863 ± 0.065    0.893 ± 0.017   10.000 ± 2.646    0.872 ± 0.050    0.833 ± 0.110    0.879 ± 0.046
+A2         0.907 ± 0.006    0.922 ± 0.019   15.000 ± 1.000    0.815 ± 0.007    0.875 ± 0.031    0.925 ± 0.020
+A3         0.893 ± 0.074    0.937 ± 0.023    9.333 ± 3.786    0.784 ± 0.030    0.844 ± 0.108    0.920 ± 0.061
+A4         0.896 ± 0.057    0.930 ± 0.013   11.000 ± 3.464    0.741 ± 0.110    0.844 ± 0.094    0.925 ± 0.040
+A5         0.907 ± 0.026    0.944 ± 0.011    8.667 ± 6.807    0.858 ± 0.011    0.865 ± 0.018    0.931 ± 0.046
+A6         0.878 ± 0.059    0.911 ± 0.011    8.667 ± 0.577    0.714 ± 0.063    0.854 ± 0.095    0.891 ± 0.040
+A7         0.900 ± 0.044    0.911 ± 0.033    9.000 ± 4.359    0.795 ± 0.008    0.875 ± 0.054    0.914 ± 0.046
+Note: one val image = 1/90 ≈ 1.1 %; my val 1/32 ≈ 3.1 %; old val 1/58 ≈ 1.7 %; camera-like 1/270 ≈ 0.4 % (3 versions of the same 90 leaves).
+
+variant  network                            parameters  ONNX MB  ONNX max prob diff
+B0       mobilenet_v3_small                  1,521,956      6.4  4.62e-07
+A3       mobilenet_v3_small + upsample 224   1,521,956      6.5  1.73e-06
+A4       mobilenet_v3_large                  4,207,156     17.2  2.47e-06
+A5       efficientnet_b0                     4,012,672     16.7  1.13e-06
+A6       resnet18                           11,178,564     44.8  4.32e-07
+device: mps
+train 927 | val 90 | my val 32 | old val 58
+--- C1 seed 0
+epoch  1  training loss 0.7045  validation accuracy 0.833
+epoch  2  training loss 0.4111  validation accuracy 0.867
+epoch  3  training loss 0.4121  validation accuracy 0.822
+epoch  4  training loss 0.3320  validation accuracy 0.889
+epoch  5  training loss 0.3017  validation accuracy 0.867
+epoch  6  training loss 0.2473  validation accuracy 0.822
+epoch  7  training loss 0.3197  validation accuracy 0.922
+epoch  8  training loss 0.2596  validation accuracy 0.933
+epoch  9  training loss 0.2067  validation accuracy 0.878
+epoch 10  training loss 0.2209  validation accuracy 0.911
+epoch 11  training loss 0.1714  validation accuracy 0.900
+epoch 12  training loss 0.2005  validation accuracy 0.922
+epoch 13  training loss 0.1926  validation accuracy 0.922
+epoch 14  training loss 0.1595  validation accuracy 0.944
+epoch 15  training loss 0.1218  validation accuracy 0.922
+epoch 16  training loss 0.1304  validation accuracy 0.944
+epoch 17  training loss 0.1446  validation accuracy 0.944
+epoch 18  training loss 0.0940  validation accuracy 0.967
+epoch 19  training loss 0.1060  validation accuracy 0.922
+epoch 20  training loss 0.0974  validation accuracy 0.967
+epoch 21  training loss 0.0802  validation accuracy 0.944
+epoch 22  training loss 0.0743  validation accuracy 0.967
+epoch 23  training loss 0.0686  validation accuracy 0.967
+epoch 24  training loss 0.0675  validation accuracy 0.967
+epoch 25  training loss 0.0630  validation accuracy 0.967
+epoch 26  training loss 0.0535  validation accuracy 0.967
+epoch 27  training loss 0.0574  validation accuracy 0.967
+epoch 28  training loss 0.0438  validation accuracy 0.967
+epoch 29  training loss 0.0497  validation accuracy 0.967
+epoch 30  training loss 0.0401  validation accuracy 0.967
+{'val_last': 0.9666666666666667, 'val_best': 0.9666666666666667, 'best_epoch': 18, 'camera_last': 0.9518518518518518, 'val_mine': 0.96875, 'val_old': 0.9655172413793104}
+--- C1 seed 1
+epoch  1  training loss 0.6884  validation accuracy 0.822
+epoch  2  training loss 0.4348  validation accuracy 0.878
+epoch  3  training loss 0.3837  validation accuracy 0.922
+epoch  4  training loss 0.3375  validation accuracy 0.856
+epoch  5  training loss 0.3360  validation accuracy 0.889
+epoch  6  training loss 0.2890  validation accuracy 0.889
+epoch  7  training loss 0.2668  validation accuracy 0.889
+epoch  8  training loss 0.1972  validation accuracy 0.933
+epoch  9  training loss 0.2054  validation accuracy 0.933
+epoch 10  training loss 0.1785  validation accuracy 0.878
+epoch 11  training loss 0.1776  validation accuracy 0.889
+epoch 12  training loss 0.1890  validation accuracy 0.900
+epoch 13  training loss 0.1670  validation accuracy 0.944
+epoch 14  training loss 0.1682  validation accuracy 0.878
+epoch 15  training loss 0.1758  validation accuracy 0.967
+epoch 16  training loss 0.1296  validation accuracy 0.956
+epoch 17  training loss 0.1016  validation accuracy 0.978
+epoch 18  training loss 0.1086  validation accuracy 0.978
+epoch 19  training loss 0.0982  validation accuracy 0.956
+epoch 20  training loss 0.0934  validation accuracy 0.933
+epoch 21  training loss 0.0922  validation accuracy 0.967
+epoch 22  training loss 0.0713  validation accuracy 0.956
+epoch 23  training loss 0.0693  validation accuracy 0.956
+epoch 24  training loss 0.0618  validation accuracy 0.967
+epoch 25  training loss 0.0583  validation accuracy 0.956
+epoch 26  training loss 0.0534  validation accuracy 0.967
+epoch 27  training loss 0.0673  validation accuracy 0.956
+epoch 28  training loss 0.0500  validation accuracy 0.956
+epoch 29  training loss 0.0422  validation accuracy 0.967
+epoch 30  training loss 0.0529  validation accuracy 0.956
+{'val_last': 0.9555555555555556, 'val_best': 0.9777777777777777, 'best_epoch': 17, 'camera_last': 0.9444444444444444, 'val_mine': 0.9375, 'val_old': 0.9655172413793104}
+--- C1 seed 2
+epoch  1  training loss 0.7010  validation accuracy 0.856
+epoch  2  training loss 0.4753  validation accuracy 0.844
+epoch  3  training loss 0.3515  validation accuracy 0.889
+epoch  4  training loss 0.3029  validation accuracy 0.889
+epoch  5  training loss 0.3274  validation accuracy 0.889
+epoch  6  training loss 0.3041  validation accuracy 0.856
+epoch  7  training loss 0.2735  validation accuracy 0.956
+epoch  8  training loss 0.2117  validation accuracy 0.911
+epoch  9  training loss 0.2315  validation accuracy 0.911
+epoch 10  training loss 0.2379  validation accuracy 0.911
+epoch 11  training loss 0.1804  validation accuracy 0.933
+epoch 12  training loss 0.1788  validation accuracy 0.911
+epoch 13  training loss 0.1630  validation accuracy 0.889
+epoch 14  training loss 0.1839  validation accuracy 0.900
+epoch 15  training loss 0.1358  validation accuracy 0.933
+epoch 16  training loss 0.0879  validation accuracy 0.933
+epoch 17  training loss 0.0761  validation accuracy 0.922
+epoch 18  training loss 0.1068  validation accuracy 0.911
+epoch 19  training loss 0.1060  validation accuracy 0.922
+epoch 20  training loss 0.0870  validation accuracy 0.956
+epoch 21  training loss 0.1074  validation accuracy 0.911
+epoch 22  training loss 0.0818  validation accuracy 0.922
+epoch 23  training loss 0.0710  validation accuracy 0.944
+epoch 24  training loss 0.0758  validation accuracy 0.944
+epoch 25  training loss 0.0621  validation accuracy 0.956
+epoch 26  training loss 0.0582  validation accuracy 0.933
+epoch 27  training loss 0.0602  validation accuracy 0.944
+epoch 28  training loss 0.0678  validation accuracy 0.933
+epoch 29  training loss 0.0489  validation accuracy 0.944
+epoch 30  training loss 0.0552  validation accuracy 0.933
+{'val_last': 0.9333333333333333, 'val_best': 0.9555555555555556, 'best_epoch': 7, 'camera_last': 0.9518518518518518, 'val_mine': 0.9375, 'val_old': 0.9310344827586207}
+--- C2 seed 0
+epoch  1  training loss 0.6152  validation accuracy 0.933
+epoch  2  training loss 0.2491  validation accuracy 0.856
+epoch  3  training loss 0.2320  validation accuracy 0.889
+epoch  4  training loss 0.1559  validation accuracy 0.900
+epoch  5  training loss 0.1140  validation accuracy 0.922
+epoch  6  training loss 0.0785  validation accuracy 0.922
+epoch  7  training loss 0.0428  validation accuracy 0.911
+epoch  8  training loss 0.0716  validation accuracy 0.900
+epoch  9  training loss 0.0491  validation accuracy 0.933
+epoch 10  training loss 0.0736  validation accuracy 0.889
+epoch 11  training loss 0.0576  validation accuracy 0.867
+epoch 12  training loss 0.0686  validation accuracy 0.889
+epoch 13  training loss 0.0422  validation accuracy 0.911
+epoch 14  training loss 0.0317  validation accuracy 0.922
+epoch 15  training loss 0.0107  validation accuracy 0.911
+epoch 16  training loss 0.0229  validation accuracy 0.900
+epoch 17  training loss 0.0185  validation accuracy 0.922
+epoch 18  training loss 0.0084  validation accuracy 0.900
+epoch 19  training loss 0.0137  validation accuracy 0.911
+epoch 20  training loss 0.0156  validation accuracy 0.933
+epoch 21  training loss 0.0112  validation accuracy 0.911
+epoch 22  training loss 0.0124  validation accuracy 0.922
+epoch 23  training loss 0.0037  validation accuracy 0.933
+epoch 24  training loss 0.0037  validation accuracy 0.944
+epoch 25  training loss 0.0017  validation accuracy 0.933
+epoch 26  training loss 0.0028  validation accuracy 0.933
+epoch 27  training loss 0.0024  validation accuracy 0.933
+epoch 28  training loss 0.0022  validation accuracy 0.944
+epoch 29  training loss 0.0016  validation accuracy 0.933
+epoch 30  training loss 0.0013  validation accuracy 0.922
+{'val_last': 0.9222222222222223, 'val_best': 0.9444444444444444, 'best_epoch': 24, 'camera_last': 0.8481481481481481, 'val_mine': 0.9375, 'val_old': 0.9137931034482759}
+--- C2 seed 1
+epoch  1  training loss 0.6362  validation accuracy 0.889
+epoch  2  training loss 0.2958  validation accuracy 0.867
+epoch  3  training loss 0.1552  validation accuracy 0.911
+epoch  4  training loss 0.1263  validation accuracy 0.922
+epoch  5  training loss 0.0938  validation accuracy 0.889
+epoch  6  training loss 0.1295  validation accuracy 0.889
+epoch  7  training loss 0.0829  validation accuracy 0.911
+epoch  8  training loss 0.0987  validation accuracy 0.900
+epoch  9  training loss 0.0663  validation accuracy 0.889
+epoch 10  training loss 0.0364  validation accuracy 0.867
+epoch 11  training loss 0.0439  validation accuracy 0.900
+epoch 12  training loss 0.0272  validation accuracy 0.900
+epoch 13  training loss 0.0430  validation accuracy 0.900
+epoch 14  training loss 0.0312  validation accuracy 0.922
+epoch 15  training loss 0.0148  validation accuracy 0.889
+epoch 16  training loss 0.0155  validation accuracy 0.922
+epoch 17  training loss 0.0069  validation accuracy 0.900
+epoch 18  training loss 0.0179  validation accuracy 0.889
+epoch 19  training loss 0.0211  validation accuracy 0.933
+epoch 20  training loss 0.0288  validation accuracy 0.900
+epoch 21  training loss 0.0117  validation accuracy 0.944
+epoch 22  training loss 0.0139  validation accuracy 0.922
+epoch 23  training loss 0.0120  validation accuracy 0.900
+epoch 24  training loss 0.0040  validation accuracy 0.922
+epoch 25  training loss 0.0042  validation accuracy 0.922
+epoch 26  training loss 0.0092  validation accuracy 0.922
+epoch 27  training loss 0.0035  validation accuracy 0.922
+epoch 28  training loss 0.0019  validation accuracy 0.922
+epoch 29  training loss 0.0023  validation accuracy 0.922
+epoch 30  training loss 0.0071  validation accuracy 0.922
+{'val_last': 0.9222222222222223, 'val_best': 0.9444444444444444, 'best_epoch': 21, 'camera_last': 0.825925925925926, 'val_mine': 0.90625, 'val_old': 0.9310344827586207}
+--- C2 seed 2
+epoch  1  training loss 0.6493  validation accuracy 0.900
+epoch  2  training loss 0.3163  validation accuracy 0.867
+epoch  3  training loss 0.1711  validation accuracy 0.889
+epoch  4  training loss 0.1369  validation accuracy 0.844
+epoch  5  training loss 0.1417  validation accuracy 0.944
+epoch  6  training loss 0.0907  validation accuracy 0.867
+epoch  7  training loss 0.1707  validation accuracy 0.878
+epoch  8  training loss 0.0456  validation accuracy 0.911
+epoch  9  training loss 0.0468  validation accuracy 0.911
+epoch 10  training loss 0.0317  validation accuracy 0.889
+epoch 11  training loss 0.0671  validation accuracy 0.922
+epoch 12  training loss 0.0466  validation accuracy 0.922
+epoch 13  training loss 0.0176  validation accuracy 0.944
+epoch 14  training loss 0.0191  validation accuracy 0.911
+epoch 15  training loss 0.0173  validation accuracy 0.944
+epoch 16  training loss 0.0073  validation accuracy 0.933
+epoch 17  training loss 0.0125  validation accuracy 0.911
+epoch 18  training loss 0.0223  validation accuracy 0.933
+epoch 19  training loss 0.0094  validation accuracy 0.956
+epoch 20  training loss 0.0339  validation accuracy 0.933
+epoch 21  training loss 0.0157  validation accuracy 0.956
+epoch 22  training loss 0.0034  validation accuracy 0.933
+epoch 23  training loss 0.0059  validation accuracy 0.956
+epoch 24  training loss 0.0049  validation accuracy 0.967
+epoch 25  training loss 0.0091  validation accuracy 0.944
+epoch 26  training loss 0.0036  validation accuracy 0.956
+epoch 27  training loss 0.0021  validation accuracy 0.944
+epoch 28  training loss 0.0038  validation accuracy 0.944
+epoch 29  training loss 0.0256  validation accuracy 0.956
+epoch 30  training loss 0.0050  validation accuracy 0.933
+{'val_last': 0.9333333333333333, 'val_best': 0.9666666666666667, 'best_epoch': 24, 'camera_last': 0.8629629629629629, 'val_mine': 0.9375, 'val_old': 0.9310344827586207}
+
+variant         val_last         val_best       best_epoch      camera_last         val_mine          val_old
+B0         0.863 ± 0.046    0.885 ± 0.017   10.000 ± 3.000    0.800 ± 0.042    0.844 ± 0.054    0.874 ± 0.043
+A1         0.863 ± 0.065    0.893 ± 0.017   10.000 ± 2.646    0.872 ± 0.050    0.833 ± 0.110    0.879 ± 0.046
+A2         0.907 ± 0.006    0.922 ± 0.019   15.000 ± 1.000    0.815 ± 0.007    0.875 ± 0.031    0.925 ± 0.020
+A3         0.893 ± 0.074    0.937 ± 0.023    9.333 ± 3.786    0.784 ± 0.030    0.844 ± 0.108    0.920 ± 0.061
+A4         0.896 ± 0.057    0.930 ± 0.013   11.000 ± 3.464    0.741 ± 0.110    0.844 ± 0.094    0.925 ± 0.040
+A5         0.907 ± 0.026    0.944 ± 0.011    8.667 ± 6.807    0.858 ± 0.011    0.865 ± 0.018    0.931 ± 0.046
+A6         0.878 ± 0.059    0.911 ± 0.011    8.667 ± 0.577    0.714 ± 0.063    0.854 ± 0.095    0.891 ± 0.040
+A7         0.900 ± 0.044    0.911 ± 0.033    9.000 ± 4.359    0.795 ± 0.008    0.875 ± 0.054    0.914 ± 0.046
+C1         0.952 ± 0.017    0.967 ± 0.011   14.000 ± 6.083    0.949 ± 0.004    0.948 ± 0.018    0.954 ± 0.020
+C2         0.926 ± 0.006    0.952 ± 0.013   23.000 ± 1.732    0.846 ± 0.019    0.927 ± 0.018    0.925 ± 0.010
+Note: one val image = 1/90 ≈ 1.1 %; my val 1/32 ≈ 3.1 %; old val 1/58 ≈ 1.7 %; camera-like 1/270 ≈ 0.4 % (3 versions of the same 90 leaves).
+
+score = mean over seeds of (val_last + camera_last) / 2
+B0       0.831 ± 0.027
+A5       0.883 ± 0.018
+C1       0.951 ± 0.008
+C2       0.886 ± 0.012
+device: mps
+train 927 | val 90 | my val 32 | old val 58
+
+variant         val_last         val_best       best_epoch      camera_last         val_mine          val_old
+B0         0.863 ± 0.046    0.885 ± 0.017   10.000 ± 3.000    0.800 ± 0.042    0.844 ± 0.054    0.874 ± 0.043
+A1         0.863 ± 0.065    0.893 ± 0.017   10.000 ± 2.646    0.872 ± 0.050    0.833 ± 0.110    0.879 ± 0.046
+A2         0.907 ± 0.006    0.922 ± 0.019   15.000 ± 1.000    0.815 ± 0.007    0.875 ± 0.031    0.925 ± 0.020
+A3         0.893 ± 0.074    0.937 ± 0.023    9.333 ± 3.786    0.784 ± 0.030    0.844 ± 0.108    0.920 ± 0.061
+A4         0.896 ± 0.057    0.930 ± 0.013   11.000 ± 3.464    0.741 ± 0.110    0.844 ± 0.094    0.925 ± 0.040
+A5         0.907 ± 0.026    0.944 ± 0.011    8.667 ± 6.807    0.858 ± 0.011    0.865 ± 0.018    0.931 ± 0.046
+A6         0.878 ± 0.059    0.911 ± 0.011    8.667 ± 0.577    0.714 ± 0.063    0.854 ± 0.095    0.891 ± 0.040
+A7         0.900 ± 0.044    0.911 ± 0.033    9.000 ± 4.359    0.795 ± 0.008    0.875 ± 0.054    0.914 ± 0.046
+C1         0.952 ± 0.017    0.967 ± 0.011   14.000 ± 6.083    0.949 ± 0.004    0.948 ± 0.018    0.954 ± 0.020
+C2         0.926 ± 0.006    0.952 ± 0.013   23.000 ± 1.732    0.846 ± 0.019    0.927 ± 0.018    0.925 ± 0.010
+Note: one val image = 1/90 ≈ 1.1 %; my val 1/32 ≈ 3.1 %; old val 1/58 ≈ 1.7 %; camera-like 1/270 ≈ 0.4 % (3 versions of the same 90 leaves).
+
+score = mean over seeds of (val_last + camera_last) / 2
+B0       0.831 ± 0.027
+A5       0.883 ± 0.018
+C1       0.951 ± 0.008
+C2       0.886 ± 0.012
+--- final B0 seed 0
+epoch  1  training loss 0.7500  validation accuracy 0.822
+epoch  2  training loss 0.2454  validation accuracy 0.833
+epoch  3  training loss 0.1895  validation accuracy 0.822
+epoch  4  training loss 0.1153  validation accuracy 0.800
+epoch  5  training loss 0.1007  validation accuracy 0.800
+epoch  6  training loss 0.0646  validation accuracy 0.800
+epoch  7  training loss 0.0326  validation accuracy 0.822
+epoch  8  training loss 0.0464  validation accuracy 0.833
+epoch  9  training loss 0.0760  validation accuracy 0.844
+epoch 10  training loss 0.0548  validation accuracy 0.867
+epoch 11  training loss 0.0782  validation accuracy 0.800
+epoch 12  training loss 0.0611  validation accuracy 0.833
+epoch 13  training loss 0.0372  validation accuracy 0.856
+epoch 14  training loss 0.0575  validation accuracy 0.767
+epoch 15  training loss 0.0182  validation accuracy 0.811
+{'val_last': 0.8111111111111111, 'val_best': 0.8666666666666667, 'best_epoch': 10, 'camera_last': 0.8222222222222222, 'val_mine': 0.78125, 'val_old': 0.8275862068965517}
+val_last and camera_last match results_v2.csv: True
+--- final B0 seed 1
+epoch  1  training loss 0.7639  validation accuracy 0.744
+epoch  2  training loss 0.2353  validation accuracy 0.856
+epoch  3  training loss 0.1217  validation accuracy 0.878
+epoch  4  training loss 0.0920  validation accuracy 0.867
+epoch  5  training loss 0.1531  validation accuracy 0.767
+epoch  6  training loss 0.0965  validation accuracy 0.844
+epoch  7  training loss 0.0613  validation accuracy 0.889
+epoch  8  training loss 0.0481  validation accuracy 0.844
+epoch  9  training loss 0.0848  validation accuracy 0.833
+epoch 10  training loss 0.0816  validation accuracy 0.867
+epoch 11  training loss 0.0392  validation accuracy 0.856
+epoch 12  training loss 0.0222  validation accuracy 0.856
+epoch 13  training loss 0.0327  validation accuracy 0.811
+epoch 14  training loss 0.0489  validation accuracy 0.878
+epoch 15  training loss 0.0697  validation accuracy 0.878
+{'val_last': 0.8777777777777778, 'val_best': 0.8888888888888888, 'best_epoch': 7, 'camera_last': 0.7518518518518519, 'val_mine': 0.875, 'val_old': 0.8793103448275862}
+val_last and camera_last match results_v2.csv: True
+--- final B0 seed 2
+epoch  1  training loss 0.7355  validation accuracy 0.789
+epoch  2  training loss 0.2884  validation accuracy 0.822
+epoch  3  training loss 0.1389  validation accuracy 0.867
+epoch  4  training loss 0.0624  validation accuracy 0.867
+epoch  5  training loss 0.0755  validation accuracy 0.878
+epoch  6  training loss 0.0852  validation accuracy 0.867
+epoch  7  training loss 0.1079  validation accuracy 0.844
+epoch  8  training loss 0.0798  validation accuracy 0.800
+epoch  9  training loss 0.0854  validation accuracy 0.844
+epoch 10  training loss 0.0390  validation accuracy 0.833
+epoch 11  training loss 0.0472  validation accuracy 0.822
+epoch 12  training loss 0.1182  validation accuracy 0.722
+epoch 13  training loss 0.0847  validation accuracy 0.900
+epoch 14  training loss 0.0459  validation accuracy 0.889
+epoch 15  training loss 0.0099  validation accuracy 0.900
+{'val_last': 0.9, 'val_best': 0.9, 'best_epoch': 13, 'camera_last': 0.825925925925926, 'val_mine': 0.875, 'val_old': 0.9137931034482759}
+val_last and camera_last match results_v2.csv: True
+--- final C1 seed 0
+epoch  1  training loss 0.7045  validation accuracy 0.833
+epoch  2  training loss 0.4111  validation accuracy 0.867
+epoch  3  training loss 0.4121  validation accuracy 0.822
+epoch  4  training loss 0.3320  validation accuracy 0.889
+epoch  5  training loss 0.3017  validation accuracy 0.867
+epoch  6  training loss 0.2473  validation accuracy 0.822
+epoch  7  training loss 0.3197  validation accuracy 0.922
+epoch  8  training loss 0.2596  validation accuracy 0.933
+epoch  9  training loss 0.2067  validation accuracy 0.878
+epoch 10  training loss 0.2209  validation accuracy 0.911
+epoch 11  training loss 0.1714  validation accuracy 0.900
+epoch 12  training loss 0.2005  validation accuracy 0.922
+epoch 13  training loss 0.1926  validation accuracy 0.922
+epoch 14  training loss 0.1595  validation accuracy 0.944
+epoch 15  training loss 0.1218  validation accuracy 0.922
+epoch 16  training loss 0.1304  validation accuracy 0.944
+epoch 17  training loss 0.1446  validation accuracy 0.944
+epoch 18  training loss 0.0940  validation accuracy 0.967
+epoch 19  training loss 0.1060  validation accuracy 0.922
+epoch 20  training loss 0.0974  validation accuracy 0.967
+epoch 21  training loss 0.0802  validation accuracy 0.944
+epoch 22  training loss 0.0743  validation accuracy 0.967
+epoch 23  training loss 0.0686  validation accuracy 0.967
+epoch 24  training loss 0.0675  validation accuracy 0.967
+epoch 25  training loss 0.0630  validation accuracy 0.967
+epoch 26  training loss 0.0535  validation accuracy 0.967
+epoch 27  training loss 0.0574  validation accuracy 0.967
+epoch 28  training loss 0.0438  validation accuracy 0.967
+epoch 29  training loss 0.0497  validation accuracy 0.967
+epoch 30  training loss 0.0401  validation accuracy 0.967
+{'val_last': 0.9666666666666667, 'val_best': 0.9666666666666667, 'best_epoch': 18, 'camera_last': 0.9518518518518518, 'val_mine': 0.96875, 'val_old': 0.9655172413793104}
+val_last and camera_last match results_v2.csv: True
+--- final C1 seed 1
+epoch  1  training loss 0.6884  validation accuracy 0.822
+epoch  2  training loss 0.4348  validation accuracy 0.878
+epoch  3  training loss 0.3837  validation accuracy 0.922
+epoch  4  training loss 0.3375  validation accuracy 0.856
+epoch  5  training loss 0.3360  validation accuracy 0.889
+epoch  6  training loss 0.2890  validation accuracy 0.889
+epoch  7  training loss 0.2668  validation accuracy 0.889
+epoch  8  training loss 0.1972  validation accuracy 0.933
+epoch  9  training loss 0.2054  validation accuracy 0.933
+epoch 10  training loss 0.1785  validation accuracy 0.878
+epoch 11  training loss 0.1776  validation accuracy 0.889
+epoch 12  training loss 0.1890  validation accuracy 0.900
+epoch 13  training loss 0.1670  validation accuracy 0.944
+epoch 14  training loss 0.1682  validation accuracy 0.878
+epoch 15  training loss 0.1758  validation accuracy 0.967
+epoch 16  training loss 0.1296  validation accuracy 0.956
+epoch 17  training loss 0.1016  validation accuracy 0.978
+epoch 18  training loss 0.1086  validation accuracy 0.978
+epoch 19  training loss 0.0982  validation accuracy 0.956
+epoch 20  training loss 0.0934  validation accuracy 0.933
+epoch 21  training loss 0.0922  validation accuracy 0.967
+epoch 22  training loss 0.0713  validation accuracy 0.956
+epoch 23  training loss 0.0693  validation accuracy 0.956
+epoch 24  training loss 0.0618  validation accuracy 0.967
+epoch 25  training loss 0.0583  validation accuracy 0.956
+epoch 26  training loss 0.0534  validation accuracy 0.967
+epoch 27  training loss 0.0673  validation accuracy 0.956
+epoch 28  training loss 0.0500  validation accuracy 0.956
+epoch 29  training loss 0.0422  validation accuracy 0.967
+epoch 30  training loss 0.0529  validation accuracy 0.956
+{'val_last': 0.9555555555555556, 'val_best': 0.9777777777777777, 'best_epoch': 17, 'camera_last': 0.9444444444444444, 'val_mine': 0.9375, 'val_old': 0.9655172413793104}
+val_last and camera_last match results_v2.csv: True
+--- final C1 seed 2
+epoch  1  training loss 0.7010  validation accuracy 0.856
+epoch  2  training loss 0.4753  validation accuracy 0.844
+epoch  3  training loss 0.3515  validation accuracy 0.889
+epoch  4  training loss 0.3029  validation accuracy 0.889
+epoch  5  training loss 0.3274  validation accuracy 0.889
+epoch  6  training loss 0.3041  validation accuracy 0.856
+epoch  7  training loss 0.2735  validation accuracy 0.956
+epoch  8  training loss 0.2117  validation accuracy 0.911
+epoch  9  training loss 0.2315  validation accuracy 0.911
+epoch 10  training loss 0.2379  validation accuracy 0.911
+epoch 11  training loss 0.1804  validation accuracy 0.933
+epoch 12  training loss 0.1788  validation accuracy 0.911
+epoch 13  training loss 0.1630  validation accuracy 0.889
+epoch 14  training loss 0.1839  validation accuracy 0.900
+epoch 15  training loss 0.1358  validation accuracy 0.933
+epoch 16  training loss 0.0879  validation accuracy 0.933
+epoch 17  training loss 0.0761  validation accuracy 0.922
+epoch 18  training loss 0.1068  validation accuracy 0.911
+epoch 19  training loss 0.1060  validation accuracy 0.922
+epoch 20  training loss 0.0870  validation accuracy 0.956
+epoch 21  training loss 0.1074  validation accuracy 0.911
+epoch 22  training loss 0.0818  validation accuracy 0.922
+epoch 23  training loss 0.0710  validation accuracy 0.944
+epoch 24  training loss 0.0758  validation accuracy 0.944
+epoch 25  training loss 0.0621  validation accuracy 0.956
+epoch 26  training loss 0.0582  validation accuracy 0.933
+epoch 27  training loss 0.0602  validation accuracy 0.944
+epoch 28  training loss 0.0678  validation accuracy 0.933
+epoch 29  training loss 0.0489  validation accuracy 0.944
+epoch 30  training loss 0.0552  validation accuracy 0.933
+{'val_last': 0.9333333333333333, 'val_best': 0.9555555555555556, 'best_epoch': 7, 'camera_last': 0.9518518518518518, 'val_mine': 0.9375, 'val_old': 0.9310344827586207}
+val_last and camera_last match results_v2.csv: True

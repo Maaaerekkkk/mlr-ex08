@@ -1,0 +1,49 @@
+val check B0 seed 0: 0.811 (results_v2.csv 0.811)
+val check B0 seed 1: 0.878 (results_v2.csv 0.878)
+val check B0 seed 2: 0.900 (results_v2.csv 0.900)
+val check C1 seed 0: 0.967 (results_v2.csv 0.967)
+val check C1 seed 1: 0.956 (results_v2.csv 0.956)
+val check C1 seed 2: 0.933 (results_v2.csv 0.933)
+[torch.onnx] Obtain model graph for `EfficientNet([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `EfficientNet([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+
+leaf_model_final.onnx: 16.7 MB
+     apple  pytorch 0.889  onnx 0.889
+    cherry  pytorch 0.108  onnx 0.108
+  chestnut  pytorch 0.002  onnx 0.002
+     maple  pytorch 0.000  onnx 0.000
+same to 3 decimals: True
+
+test images: {'test': 87, 'test_mine': 29, 'test_old': 58}
+variant  seed      test  test_mine  test_old
+B0       0      0.862      0.793     0.897
+B0       1      0.828      0.862     0.810
+B0       2      0.897      0.897     0.897
+B0       mean   0.862      0.851     0.868
+B0       std    0.034      0.053     0.050
+C1       0      0.931      0.966     0.914
+C1       1      0.920      0.966     0.897
+C1       2      0.897      0.931     0.879
+C1       mean   0.916      0.954     0.897
+C1       std    0.018      0.020     0.017
+one test image = 1/87 ≈ 1.1 %; my part 1/29 ≈ 3.4 %; old part 1/58 ≈ 1.7 %
+
+C1 seed 0 confusion matrix (rows true, columns predicted)
+               apple    cherry  chestnut     maple
+     apple        22         1         0         0
+    cherry         5        19         0         0
+  chestnut         0         0        20         0
+     maple         0         0         0        20
+
+B0 seed 0 confusion matrix (rows true, columns predicted)
+               apple    cherry  chestnut     maple
+     apple        17         6         0         0
+    cherry         4        20         0         0
+  chestnut         0         1        19         0
+     maple         0         0         1        19
